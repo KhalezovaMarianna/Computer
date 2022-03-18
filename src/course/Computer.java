@@ -1,10 +1,20 @@
 package course;
 
 public abstract class Computer {
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    private String user;
     private Email email;
     private Keyboard keyboard;
 
     public Computer(String user) {
+        this.user=user;
     }
 
     public Computer(Email email) {
