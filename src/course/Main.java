@@ -13,8 +13,15 @@ public class Main {
         System.out.println(user2.toString());
         //System.out.println((user2.equals(user3)));
         System.out.println(user2==user3);
-        user1.send(pasha, sasha, email1);
+       // user1.send(pasha, sasha, email1);
         user2.send(sasha, pasha, email2);
+        user1.login();
+       MacBookModel.checkModel();
+        Dell user4 = new Dell("user4");
+        user4.resetToDefaultAllDells();
+
+
+
 
 
     }

@@ -1,6 +1,9 @@
 package course;
 
-public abstract class Computer {
+public abstract class Computer implements Launch, ShutDown {
+    public Computer() {
+    }
+
     public String getUser() {
         return user;
     }
@@ -14,7 +17,7 @@ public abstract class Computer {
     private Keyboard keyboard;
 
     public Computer(String user) {
-        this.user=user;
+        this.user = user;
     }
 
     public Computer(Email email) {

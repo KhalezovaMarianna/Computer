@@ -2,7 +2,7 @@ package course;
 
 import java.util.Objects;
 
-public class Asus extends Computer {
+public class Asus extends Computer implements CheckBattery {
     private String model;
     private String processor;
 
@@ -40,18 +40,31 @@ public class Asus extends Computer {
 
     @Override
     public boolean equals(Object o) {
-        if (this==o){
+        if (this == o) {
             return true;
         }
-        if(o==null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Asus computer = (Asus) o;
-        return this.getUser().equals( computer.getUser());
+        return this.getUser().equals(computer.getUser());
     }
-   @Override
-    public int hashCode(){
+
+    @Override
+    public int hashCode() {
         return Objects.hash(getUser());
+    }
+
+    @Override
+    public void checkPower() {
+        System.out.println(model + " is full ");
+
+    }
+
+    @Override
+    public void shutDown() {
+        System.out.println(" Asus is shutdown");
+
     }
 }
 
