@@ -4,14 +4,17 @@ public abstract class Computer implements ILaunch, IShutDown {
     private String user;
     private Email email;
     private Keyboard keyboard;
+
     public Computer() {
     }
+
     public Computer(String user) {
         this.user = user;
     }
 
     public Computer(Email email) {
     }
+
     public String getUser() {
         return user;
     }
@@ -19,9 +22,6 @@ public abstract class Computer implements ILaunch, IShutDown {
     public void setUser(String user) {
         this.user = user;
     }
-
-
-
 
 
     public Email getEmail() {
