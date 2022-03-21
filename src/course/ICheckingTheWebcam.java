@@ -1,5 +1,5 @@
 package course;
 
-public interface CheckingTheWebcam {
+public interface ICheckingTheWebcam {
     void checkTheWebcam();
 }

@@ -1,5 +1,5 @@
 package course;
 
-public interface LoginID {
+public interface ILoginID {
     void login();
 }

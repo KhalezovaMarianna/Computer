@@ -1,5 +1,5 @@
 package course;
 
-public interface ShutDown {
+public interface IShutDown {
     void shutDown();
 }

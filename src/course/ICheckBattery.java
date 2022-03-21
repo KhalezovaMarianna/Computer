@@ -1,6 +1,6 @@
 package course;
 
-public interface CheckBattery {
+public interface ICheckBattery {
     void checkPower();
 
 }

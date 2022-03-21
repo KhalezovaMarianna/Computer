@@ -1,6 +1,6 @@
 package course;
 
-public class Dell extends Computer implements CheckingTheWebcam {
+public class Dell extends Computer implements ICheckingTheWebcam {
     private String processor;
     private double battery;
 
@@ -36,6 +36,7 @@ public class Dell extends Computer implements CheckingTheWebcam {
 
     @Override
     public void checkTheWebcam() {
+        System.out.println("Webcam is working");
 
     }
 

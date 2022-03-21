@@ -2,7 +2,7 @@ package course;
 
 import java.util.Objects;
 
-public class Asus extends Computer implements CheckBattery {
+public class Asus extends Computer implements ICheckBattery {
     private String model;
     private String processor;
 

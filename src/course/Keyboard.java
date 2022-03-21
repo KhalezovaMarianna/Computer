@@ -3,6 +3,9 @@ package course;
 public class Keyboard {
     private String color;
     private String typeButtons;
+    public Keyboard(String color){
+        this.color=color;
+    }
 
     public String getTypeButtons() {
         return typeButtons;
@@ -13,11 +16,11 @@ public class Keyboard {
     }
 
 
-    public String getName() {
+    public String getColor() {
         return color;
     }
 
-    public void setName(String name) {
+    public void setColor(String color) {
         this.color = color;
     }
 

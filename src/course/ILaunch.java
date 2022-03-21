@@ -1,5 +1,5 @@
 package course;
 
-public interface Launch {
+public interface ILaunch {
     default void launch(){}
 }
