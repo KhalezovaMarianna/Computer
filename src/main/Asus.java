@@ -1,8 +1,12 @@
 package main;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 public class Asus extends Computer implements ICheckBattery {
+    private static final Logger LOGGER = LogManager.getLogger(Asus.class);
     private String model;
     private String processor;
 
@@ -30,7 +34,7 @@ public class Asus extends Computer implements ICheckBattery {
 
     @Override
     public void send(User sender, User receiver, Email email) {
-        System.out.println("Letter was sent by Asus by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
+        LOGGER.info("Letter was sent by Asus by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
     }
 
     @Override
@@ -57,13 +61,13 @@ public class Asus extends Computer implements ICheckBattery {
 
     @Override
     public void checkPower() {
-        System.out.println(model + " is full ");
+       LOGGER.info(model + " is full ");
 
     }
 
     @Override
     public void shutDown() {
-        System.out.println(" Asus is shutdown");
+        LOGGER.info(" Asus is shutdown");
 
     }
 }

@@ -1,13 +1,16 @@
 package main;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class MacBook extends Computer implements ILoginID {
+    private static final Logger LOGGER = LogManager.getLogger(MacBook.class);
     private String model;
     private String operationSystem;
     private static final String NAMEMODEL = "MacBook air";
 
     static {
-        System.out.print(
-                " You switched to control MacBook air ");
+       LOGGER.info(" You switched to control MacBook air ");
     }
 
     public MacBook() {
@@ -39,28 +42,28 @@ public class MacBook extends Computer implements ILoginID {
     }
 
     public static void checkModel() {
-        System.out.println(NAMEMODEL);
+        LOGGER.info(NAMEMODEL);
     }
 
 
     @Override
     public void send(User sender, User receiver, Email email) {
-        System.out.println("Letter was sent by MacBook by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
+       LOGGER.info("Letter was sent by MacBook by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
     }
 
     @Override
     public void launch() {
-        System.out.println(getUser() + " was launched ");
+        LOGGER.info(getUser() + " was launched ");
     }
 
     @Override
     public void login() {
-        System.out.println(NAMEMODEL + " ID recognized ");
+        LOGGER.info(NAMEMODEL + " ID recognized ");
     }
 
     @Override
     public void shutDown() {
-        System.out.println(" MacBook is shutdown");
+        LOGGER.info(" MacBook is shutdown");
 
 
     }

@@ -1,8 +1,12 @@
 package main;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 public class Dell extends Computer implements ICheckingTheWebcam {
+    private static final Logger LOGGER = LogManager.getLogger(Dell.class);
     private String processor;
     private double battery;
     private String mouse;
@@ -54,22 +58,22 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     @Override
     public void send(User sender, User receiver, Email email) {
-        System.out.println("Letter was sent by Dell by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
+      LOGGER.info("Letter was sent by Dell by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
     }
 
     public final void resetToDefaultAllDells() {
-        System.out.println(" All Dell computers were resetted to default ");
+        LOGGER.info(" All Dell computers were resetted to default ");
     }
 
     @Override
     public void checkTheWebcam() {
-        System.out.println("Webcam is working");
+        LOGGER.info("Webcam is working");
 
     }
 
     @Override
     public void shutDown() {
-        System.out.println(" Dell is shutdown");
+       LOGGER.info(" Dell is shutdown");
 
 
     }
