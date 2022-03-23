@@ -1,5 +1,6 @@
 package main;
 
+import exceptions.BatteryException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +12,8 @@ public class Main {
         LOGGER.info("info");
         LOGGER.debug("debug");
         LOGGER.error("error");
-
+        Dell battery = new Dell();
+        battery.getBattery();
         User sasha = new User("Sasha");
         User pasha = new User("Pasha");
         Email email1 = new Email("text1", "test1@gmail.ru");

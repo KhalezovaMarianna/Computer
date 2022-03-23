@@ -1,5 +1,6 @@
 package main;
 
+import exceptions.BatteryException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,6 +11,9 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     private String processor;
     private double battery;
     private String mouse;
+
+    public Dell() {
+    }
 
     public String getMouse() {
         return mouse;
@@ -25,11 +29,20 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     }
 
 
-    public double getBattery() {
-        return battery;
+    public void getBattery() {
+        Dell battery = new Dell();
+        try {
+            battery.setBattery(-10);
+        } catch (BatteryException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    public void setBattery(double battery) {
+    public void setBattery(double battery) throws BatteryException {
+        if (battery <= 0) {
+            throw new BatteryException("Battery is incorrect");
+        }
         this.battery = battery;
     }
 
@@ -58,7 +71,7 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     @Override
     public void send(User sender, User receiver, Email email) {
-      LOGGER.info("Letter was sent by Dell by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
+        LOGGER.info("Letter was sent by Dell by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
     }
 
     public final void resetToDefaultAllDells() {
@@ -73,7 +86,7 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     @Override
     public void shutDown() {
-       LOGGER.info(" Dell is shutdown");
+        LOGGER.info(" Dell is shutdown");
 
 
     }

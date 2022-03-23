@@ -1,0 +1,3 @@
+2022-03-23 15:47:37,170 INFO m.Main [main] info
+2022-03-23 15:47:37,173 DEBUG m.Main [main] debug
+2022-03-23 15:47:37,174 ERROR m.Main [main] error
