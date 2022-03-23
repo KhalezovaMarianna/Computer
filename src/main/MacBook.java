@@ -1,4 +1,4 @@
-package course;
+package main;
 
 public class MacBook extends Computer implements ILoginID {
     private String model;

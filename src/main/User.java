@@ -1,4 +1,4 @@
-package course;
+package main;
 
 public class User {
 

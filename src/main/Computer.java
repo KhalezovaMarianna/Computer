@@ -1,4 +1,4 @@
-package course;
+package main;
 
 public abstract class Computer implements ILaunch, IShutDown {
     private String user;

@@ -1,8 +1,25 @@
-package course;
+package main;
+
+import java.util.Objects;
 
 public class Dell extends Computer implements ICheckingTheWebcam {
     private String processor;
     private double battery;
+    private String mouse;
+
+    public String getMouse() {
+        return mouse;
+    }
+
+    public void setMouse(String mouse) {
+        this.mouse = mouse;
+    }
+
+
+    public Dell(String user) {
+        super(user);
+    }
+
 
     public double getBattery() {
         return battery;
@@ -21,9 +38,19 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     }
 
 
-    public Dell(String user) {
-        super(user);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dell dell = (Dell) o;
+        return Double.compare(dell.battery, battery) == 0 && Objects.equals(processor, dell.processor) && Objects.equals(mouse, dell.mouse);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(processor, battery, mouse);
+    }
+
 
     @Override
     public void send(User sender, User receiver, Email email) {
@@ -46,4 +73,9 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
 
     }
+
+    public void showMouseModel() {
+        throw new NullPointerException();
+    }
+
 }

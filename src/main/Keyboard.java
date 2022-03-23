@@ -1,10 +1,11 @@
-package course;
+package main;
 
 public class Keyboard {
     private String color;
     private String typeButtons;
-    public Keyboard(String color){
-        this.color=color;
+
+    public Keyboard(String color) {
+        this.color = color;
     }
 
     public String getTypeButtons() {
