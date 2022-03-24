@@ -1,5 +1,6 @@
 package main;
 
+import exceptions.ProcessorException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,11 +20,34 @@ public class Asus extends Computer implements ICheckBattery {
     }
 
 
-    public String getProcessor() {
-        return processor;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Asus asus = (Asus) o;
+        return Objects.equals(processor, asus.processor);
     }
 
-    public void setProcessor(String processor) {
+    @Override
+    public int hashCode() {
+        return Objects.hash(processor);
+    }
+
+    public void getProcessor() {
+
+        Asus processor = new Asus("pasha");
+        try {
+            processor.setProcessor("asus");
+        } catch (ProcessorException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setProcessor(String processor) throws ProcessorException {
+        if (processor == "apple") {
+            throw new ProcessorException("is incorrect processor for Asus");
+        }
         this.processor = processor;
     }
 
@@ -43,25 +67,8 @@ public class Asus extends Computer implements ICheckBattery {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Asus computer = (Asus) o;
-        return this.getUser().equals(computer.getUser());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getUser());
-    }
-
-    @Override
     public void checkPower() {
-       LOGGER.info(model + " is full ");
+        LOGGER.info(model + " is full ");
 
     }
 

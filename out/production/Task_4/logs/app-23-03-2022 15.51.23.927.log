@@ -1,6 +1,0 @@
-2022-03-23 15:51:24,150 INFO m.Main [main] info
-2022-03-23 15:51:24,154 DEBUG m.Main [main] debug
-2022-03-23 15:51:24,155 ERROR m.Main [main] error
-2022-03-23 15:51:24,159 INFO m.Main [main]  asus,with model null processor null
-2022-03-23 15:51:24,160 INFO m.Main [main] true
-2022-03-23 15:51:24,161 INFO m.Main [main] false
