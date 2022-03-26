@@ -3,6 +3,9 @@ package main;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.HashSet;
+
+
 public class MacBook extends Computer implements ILoginID {
     private static final Logger LOGGER = LogManager.getLogger(MacBook.class);
     private String model;
@@ -13,16 +16,21 @@ public class MacBook extends Computer implements ILoginID {
        LOGGER.info(" You switched to control MacBook air ");
     }
 
+
     public MacBook() {
     }
 
-    public MacBook(String user) {
-        super(user);
-    }
 
     public MacBook(Email email) {
         super(email);
     }
+
+
+    public MacBook(String operationSystem) {
+        this.operationSystem= operationSystem;
+
+    }
+
 
     public String getOperationSystem() {
         return operationSystem;
