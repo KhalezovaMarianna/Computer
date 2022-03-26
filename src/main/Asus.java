@@ -4,12 +4,17 @@ import exceptions.ProcessorException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Asus extends Computer implements ICheckBattery {
     private static final Logger LOGGER = LogManager.getLogger(Asus.class);
     private String model;
     private String processor;
+
+    public Asus(String user) {
+        super(user);
+    }
 
     public String getModel() {
         return model;
@@ -51,10 +56,6 @@ public class Asus extends Computer implements ICheckBattery {
         this.processor = processor;
     }
 
-
-    public Asus(String user) {
-        super(user);
-    }
 
     @Override
     public void send(User sender, User receiver, Email email) {

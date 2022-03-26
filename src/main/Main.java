@@ -1,11 +1,10 @@
 package main;
 
-import exceptions.BatteryException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -20,6 +19,18 @@ public class Main {
         for (MacBook m : operationSystems) {
 
             LOGGER.info(m.getOperationSystem());
+        }
+        LinkedList<String> processorModels = new LinkedList<>();
+
+        processorModels.add("intel core i9");
+        processorModels.add("intel core i7");
+        processorModels.addLast("intel xeon e3"); // добавляем на последнее место
+        processorModels.addFirst("intel core i5"); // добавляем на первое место
+
+        LOGGER.info("List has %d elements \n", processorModels.size());
+        for (String processorModel : processorModels) {
+
+            LOGGER.info(processorModels);
         }
         LOGGER.info("info");
         LOGGER.debug("debug");

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
+import java.util.Objects;
 
 
 public class MacBook extends Computer implements ILoginID {
@@ -53,6 +54,18 @@ public class MacBook extends Computer implements ILoginID {
         LOGGER.info(NAMEMODEL);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MacBook macBook = (MacBook) o;
+        return Objects.equals(model, macBook.model) && Objects.equals(operationSystem, macBook.operationSystem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(model, operationSystem);
+    }
 
     @Override
     public void send(User sender, User receiver, Email email) {
