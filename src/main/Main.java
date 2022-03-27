@@ -9,6 +9,12 @@ public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
+
+        Dell batteryNumber = new Dell();
+        batteryNumber.addRandom();
+
+        LOGGER.info("Battery serial number" + batteryNumber.toString());
+
         HashSet<MacBook> operationSystems = new HashSet<MacBook>();
 
         operationSystems.add(new MacBook("Windows"));
@@ -31,14 +37,17 @@ public class Main {
 
             LOGGER.info(processorModels);
         }
-        List <User>users= new ArrayList<User>();
+        List<User> users = new ArrayList<User>();
         users.add(new User("Masha"));
         users.add(new User("Sasha"));
         users.add(new User("Denis"));
-        for(int i=0;i< users.size();i++)
+        /*for(int i=0;i< users.size();i++)
         {
             LOGGER.info("user of computer  "+ users.get(i));
-        }
+        }*/
+        Collections.reverse(users);
+        System.out.println(users);
+
 
         Dell battery = new Dell();
         battery.getBattery();

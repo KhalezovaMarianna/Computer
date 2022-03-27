@@ -4,7 +4,9 @@ import exceptions.BatteryException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public class Dell extends Computer implements ICheckingTheWebcam {
     private static final Logger LOGGER = LogManager.getLogger(Dell.class);
@@ -14,6 +16,19 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     public Dell() {
     }
+    ArrayList batteryNumber = new ArrayList();
+    Random generator = new Random();
+
+    void addRandom() {
+        batteryNumber.add(new Integer(generator.nextInt()));
+    }
+
+
+    public String toString() {
+        return batteryNumber.toString();
+    }
+
+
 
     public String getMouse() {
         return mouse;
