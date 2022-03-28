@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.*;
+import java.util.stream.Collector;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -41,17 +42,13 @@ public class Main {
         users.add(new User("Masha"));
         users.add(new User("Sasha"));
         users.add(new User("Denis"));
-        /*for(int i=0;i< users.size();i++)
-        {
-            LOGGER.info("user of computer  "+ users.get(i));
-        }*/
-        Collections.reverse(users);
-        System.out.println(users);
+        for (int i = 0; i < users.size(); i++) {
+            LOGGER.info("user of computer  " + users.get(i).getName());
+        }
 
 
         Dell battery = new Dell();
         battery.getBattery();
-        User sasha = new User("Sasha");
         User pasha = new User("Pasha");
         Email email1 = new Email("text1", "test1@gmail.ru");
         Email email2 = new Email("text2", "test2@gmail.ru");
@@ -60,8 +57,8 @@ public class Main {
         LOGGER.info(user2.toString());
         LOGGER.info(user2.equals(user3));
         LOGGER.info(user2 == user3);
-        user3.send(pasha, sasha, email1);
-        user2.send(sasha, pasha, email2);
+        user3.send(pasha, users.stream().filter(u -> u.getName().equals("Sasha")).findFirst().get(), email1);
+        user2.send(users.stream().filter(u -> u.getName().equals("Sasha")).findFirst().get(), pasha, email2);
         MacBook.checkModel();
         Dell user4 = new Dell("user4");
         user4.resetToDefaultAllDells();
