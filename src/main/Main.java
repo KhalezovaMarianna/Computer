@@ -45,8 +45,10 @@ public class Main {
         for (int i = 0; i < users.size(); i++) {
             LOGGER.info("user of computer  " + users.get(i).getName());
         }
-
-
+        CustomLinkedList<Email> emails = new CustomLinkedList<>();
+        emails.addFirst(new Email("denis@gmail.ru"));
+        emails.addLast(new Email("sasha@mail.ru"));
+        LOGGER.info(emails.getFirst().getEmail());
         Dell battery = new Dell();
         battery.getBattery();
         User pasha = new User("Pasha");
@@ -58,7 +60,7 @@ public class Main {
         LOGGER.info(user2.equals(user3));
         LOGGER.info(user2 == user3);
         user3.send(pasha, users.stream().filter(u -> u.getName().equals("Sasha")).findFirst().get(), email1);
-        user2.send(users.stream().filter(u -> u.getName().equals("Sasha")).findFirst().get(), pasha, email2);
+        user2.send(users.stream().filter(u -> u.getName().equals("Denis")).findFirst().get(), pasha, email2);
         MacBook.checkModel();
         Dell user4 = new Dell("user4");
         user4.resetToDefaultAllDells();
