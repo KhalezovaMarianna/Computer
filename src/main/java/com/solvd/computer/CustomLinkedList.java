@@ -1,7 +1,5 @@
-package main.java.content;
-import org.apache.logging.log4j.core.config.Node;
+package com.solvd.computer;
 import java.util.*;
-import static java.util.Collections.addAll;
 
 public class CustomLinkedList<E> extends AbstractSequentialList<E>
         implements List<E>, Deque<E>, Cloneable, java.io.Serializable {

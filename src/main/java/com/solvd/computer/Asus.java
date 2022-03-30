@@ -1,6 +1,6 @@
-package main.java.content;
+package com.solvd.computer;
 
-import exceptions.ProcessorException;
+import com.solvd.exceptions.ProcessorException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,19 +24,6 @@ public class Asus extends Computer implements ICheckBattery {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Asus asus = (Asus) o;
-        return Objects.equals(processor, asus.processor);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(processor);
-    }
-
     public void getProcessor() {
 
         Asus processor = new Asus("pasha");
@@ -55,6 +42,18 @@ public class Asus extends Computer implements ICheckBattery {
         this.processor = processor;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Asus asus = (Asus) o;
+        return Objects.equals(processor, asus.processor);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(processor);
+    }
 
     @Override
     public void send(User sender, User receiver, Email email) {

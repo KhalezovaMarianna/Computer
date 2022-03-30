@@ -1,4 +1,4 @@
-package exceptions;
+package com.solvd.exceptions;
 
 public class ProcessorException extends Exception {
 

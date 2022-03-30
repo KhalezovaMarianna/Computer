@@ -1,6 +1,4 @@
-package main.java.content;
-
-import java.util.ArrayList;
+package com.solvd.computer;
 
 public class Email {
     private String text;

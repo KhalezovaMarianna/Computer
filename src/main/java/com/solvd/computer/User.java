@@ -1,4 +1,4 @@
-package main.java.content;
+package com.solvd.computer;
 
 import java.util.Objects;
 

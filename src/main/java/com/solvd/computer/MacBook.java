@@ -1,6 +1,5 @@
-package main.java.content;
+package com.solvd.computer;
 
-import main.java.content.Computer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +13,7 @@ public class MacBook extends Computer implements ILoginID {
     private static final String NAMEMODEL = "MacBook air";
 
     static {
-       LOGGER.info(" You switched to control MacBook air ");
+        LOGGER.info(" You switched to control MacBook air ");
     }
 
 
@@ -28,7 +27,7 @@ public class MacBook extends Computer implements ILoginID {
 
 
     public MacBook(String operationSystem) {
-        this.operationSystem= operationSystem;
+        this.operationSystem = operationSystem;
 
     }
 
@@ -69,7 +68,7 @@ public class MacBook extends Computer implements ILoginID {
 
     @Override
     public void send(User sender, User receiver, Email email) {
-       LOGGER.info("Letter was sent by MacBook by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
+        LOGGER.info("Letter was sent by MacBook by " + sender.getName() + " to " + receiver.getName() + " by email " + email.getEmail());
     }
 
     @Override

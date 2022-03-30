@@ -1,4 +1,4 @@
-package main.java.content;
+package com.solvd.computer;
 
 public abstract class Computer implements ILaunch, IShutDown {
     private String user;
@@ -13,6 +13,7 @@ public abstract class Computer implements ILaunch, IShutDown {
     }
 
     public Computer(Email email) {
+        this.email=email;
     }
 
     public String getUser() {

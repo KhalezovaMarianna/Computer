@@ -1,8 +1,7 @@
-package main.java.content;
+package com.solvd.computer;
 
-import exceptions.BatteryException;
-import main.java.content.Computer;
-import main.java.content.ICheckingTheWebcam;
+import com.solvd.exceptions.BatteryException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,11 +17,11 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     public Dell() {
     }
-    ArrayList batteryNumber = new ArrayList();
-    Random generator = new Random();
+    private ArrayList batteryNumber = new ArrayList();
+    private Random generator = new Random();
 
     void addRandom() {
-        batteryNumber.add(new Integer(generator.nextInt()));
+        batteryNumber.add(generator.nextInt());
     }
 
 

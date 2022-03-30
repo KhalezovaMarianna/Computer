@@ -1,4 +1,4 @@
-package main.java.content;
+package com.solvd.computer;
 
 public interface ICheckingTheWebcam {
     void checkTheWebcam();

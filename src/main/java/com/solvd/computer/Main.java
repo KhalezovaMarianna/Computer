@@ -1,7 +1,6 @@
-package main.java.content;
+package com.solvd.computer;
 
-import main.java.content.Asus;
-import main.java.content.Computer;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
