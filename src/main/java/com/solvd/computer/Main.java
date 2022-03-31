@@ -1,9 +1,10 @@
 package com.solvd.computer;
 
 
+import com.solvd.exceptions.MouseModelException;
+import com.solvd.exceptions.ProcessorException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.*;
 
 public class Main {
@@ -33,7 +34,7 @@ public class Main {
         processorModels.addLast("intel xeon e3"); // добавляем на последнее место
         processorModels.addFirst("intel core i5"); // добавляем на первое место
 
-        LOGGER.info("List has %d elements \n", processorModels.size());
+        LOGGER.info(" List has %d elements ", processorModels.size());
         for (String processorModel : processorModels) {
 
             LOGGER.info(processorModels);
@@ -42,8 +43,8 @@ public class Main {
         users.add(new User("Masha"));
         users.add(new User("Sasha"));
         users.add(new User("Denis"));
-        for (int i = 0; i < users.size(); i++) {
-            LOGGER.info("user of computer  " + users.get(i).getName());
+        for (User user : users) {
+            LOGGER.info("user of computer  " + user.getName());
         }
         CustomLinkedList<Email> emails = new CustomLinkedList<>();
         emails.addFirst(new Email("denis@gmail.ru"));
@@ -64,10 +65,12 @@ public class Main {
         MacBook.checkModel();
         Dell user4 = new Dell("user4");
         user4.resetToDefaultAllDells();
+        user4.showMouseModel();
+        Asus processor= new Asus("Pasha");
         try {
-            user4.showMouseModel();
-        } catch (Exception e) {
-            throw new Exception(e.getCause());
+            processor.setProcessor("asus");
+        } catch (ProcessorException e){
+            LOGGER.info(e);
         }
     }
 }

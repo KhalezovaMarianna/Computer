@@ -24,19 +24,12 @@ public class Asus extends Computer implements ICheckBattery {
     }
 
 
-    public void getProcessor() {
-
-        Asus processor = new Asus("pasha");
-        try {
-            processor.setProcessor("asus");
-        } catch (ProcessorException e) {
-            e.printStackTrace();
-        }
-
+    public String getProcessor() {
+        return processor;
     }
 
     public void setProcessor(String processor) throws ProcessorException {
-        if (processor == "apple") {
+        if (Objects.equals(processor, "apple")) {
             throw new ProcessorException("is incorrect processor for Asus");
         }
         this.processor = processor;

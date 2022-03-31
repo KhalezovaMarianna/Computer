@@ -2,6 +2,7 @@ package com.solvd.computer;
 
 import com.solvd.exceptions.BatteryException;
 
+import com.solvd.exceptions.MouseModelException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,8 +18,8 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     public Dell() {
     }
-    private ArrayList batteryNumber = new ArrayList();
-    private Random generator = new Random();
+    private ArrayList<Integer> batteryNumber = new ArrayList<Integer>();
+    private final Random generator = new Random();
 
     void addRandom() {
         batteryNumber.add(generator.nextInt());
@@ -107,8 +108,13 @@ public class Dell extends Computer implements ICheckingTheWebcam {
 
     }
 
-    public void showMouseModel() {
-        throw new NullPointerException();
+    public void showMouseModel() throws Exception {
+        if (mouse == null) {
+            throw new MouseModelException("Model isn't find");
+        }
+        else {
+            LOGGER.info(getMouse());
+        }
     }
 
 }

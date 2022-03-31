@@ -1,5 +1,7 @@
 package com.solvd.computer;
 
+import com.solvd.exceptions.TextEmailException;
+
 public class Email {
     private String text;
     private String name;
@@ -9,8 +11,8 @@ public class Email {
         this.email = email;
     }
 
-    public Email(String name, String email) {
-        this.name = name;
+    public Email(String text, String email) {
+        this.text = text;
         this.email = email;
     }
 
@@ -34,7 +36,10 @@ public class Email {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(String text) throws TextEmailException {
+        if (text == null) {
+            throw new TextEmailException("text can't be empty");
+        }
         this.text = text;
     }
 
