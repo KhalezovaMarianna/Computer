@@ -1,5 +1,6 @@
 package com.solvd.computer;
 
+import com.solvd.exceptions.NameException;
 import com.solvd.exceptions.TextEmailException;
 
 public class Email {
@@ -28,7 +29,10 @@ public class Email {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws NameException {
+        if (name.equals(null)) {
+            throw new NameException("name wasn't found");
+        }
         this.name = name;
     }
 

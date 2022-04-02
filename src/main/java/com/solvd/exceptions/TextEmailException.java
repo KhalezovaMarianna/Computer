@@ -1,6 +1,6 @@
 package com.solvd.exceptions;
 
-public class TextEmailException extends Exception{
+public class TextEmailException extends Exception {
 
     public TextEmailException() {
     }
