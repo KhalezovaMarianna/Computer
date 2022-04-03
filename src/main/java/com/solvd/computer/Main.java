@@ -3,14 +3,39 @@ package com.solvd.computer;
 
 import com.solvd.exceptions.MouseModelException;
 import com.solvd.exceptions.ProcessorException;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
+
+        String path = "C://Users//Marianna//Hello.txt";
+        String content = " ";
+        try {
+
+            content = Files.readString(Paths.get(path));
+            LOGGER.info(content);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] words = content.split("\\s*(\\s|,|!|\\.)\\s*");
+        Set<String> newWords = new HashSet<String>();
+        Collections.addAll(newWords, words);
+        File newFile = new File("C://Users//Marianna//newFile1.txt");
+        FileUtils.writeStringToFile(newFile, String.valueOf(newWords.size()), (String) null);
+
 
         Dell batteryNumber = new Dell();
         batteryNumber.addRandom();
@@ -66,11 +91,12 @@ public class Main {
         Dell user4 = new Dell("user4");
         user4.resetToDefaultAllDells();
         user4.showMouseModel();
-        Asus processor= new Asus("Pasha");
+        Asus processor = new Asus("Pasha");
         try {
             processor.setProcessor("asus");
-        } catch (ProcessorException e){
+        } catch (ProcessorException e) {
             LOGGER.info(e);
         }
     }
 }
+
