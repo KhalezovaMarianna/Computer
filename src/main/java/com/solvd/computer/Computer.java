@@ -1,9 +1,17 @@
 package com.solvd.computer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import static com.solvd.computer.TypeOfEmail.*;
+
 public abstract class Computer implements ILaunch, IShutDown {
+    private static final Logger LOGGER = LogManager.getLogger(Computer.class);
     private String user;
     private Email email;
     private Keyboard keyboard;
+    private TypeOfEmail typeOfEmail;
+
 
     public Computer() {
     }
@@ -13,8 +21,9 @@ public abstract class Computer implements ILaunch, IShutDown {
     }
 
     public Computer(Email email) {
-        this.email=email;
+        this.email = email;
     }
+
 
     public String getUser() {
         return user;
@@ -43,5 +52,19 @@ public abstract class Computer implements ILaunch, IShutDown {
 
     public abstract void send(User sender, User receiver, Email email);
 
+    public void typeOfEmail() {
+
+        switch (typeOfEmail) {
+            case GMAIL:
+                LOGGER.info("Send from Gmail");
+                break;
+            case EMAIL:
+                LOGGER.info("Send from Email");
+                break;
+            case YANDEX:
+                LOGGER.info("Send from Yandex");
+                break;
+        }
+    }
 
 }

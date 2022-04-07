@@ -11,6 +11,15 @@ public class Asus extends Computer implements ICheckBattery {
     private String model;
     private String processor;
 
+    public enum OperationSystem {
+        WINDOWS, LINUX;
+
+        @Override
+        public String toString() {
+            return "OperationSystem{}";
+        }
+    }
+
     public Asus(String user) {
         super(user);
     }

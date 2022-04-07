@@ -8,6 +8,9 @@ public class Email {
     private String name;
     private String email;
 
+    private TypeOfEmail typeOfEmail;
+
+
     public Email(String email) {
         this.email = email;
     }
@@ -15,6 +18,10 @@ public class Email {
     public Email(String text, String email) {
         this.text = text;
         this.email = email;
+    }
+
+    public TypeOfEmail getTypeOfEmail() {
+        return typeOfEmail;
     }
 
     public String getEmail() {
@@ -46,5 +53,6 @@ public class Email {
         }
         this.text = text;
     }
+
 
 }
