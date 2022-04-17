@@ -1,5 +1,7 @@
 package com.solvd.computer;
-public interface FIDoSomething {
+
+@FunctionalInterface
+public interface IDoSomething {
     public abstract void doSmth();
 }
 
