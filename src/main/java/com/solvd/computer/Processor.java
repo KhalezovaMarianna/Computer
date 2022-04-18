@@ -1,10 +1,14 @@
 package com.solvd.computer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Processor {
+
     private String model;
     private int creationDate;
 
-    public Processor(String model,int creationDate) {
+    public Processor(String model, int creationDate) {
         this.model = model;
         this.creationDate = creationDate;
     }

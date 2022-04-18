@@ -20,7 +20,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         IDoSomething f = () -> LOGGER.info("Hello from Computer");
         f.doSmth();
-
+        IBroken s = ()->LOGGER.info("Processor hasn't found");
+        s.processorIsBroken();
         try {
             File file = new File("C:/Users/Marianna/IdeaProjects/Task_4/src/main/resources/Hello.txt");
             String string = StringUtils.lowerCase(FileUtils.readFileToString(file, StandardCharsets.UTF_8)).replaceAll("\\s*(\\s|,|!|\\.)\\s*", " ");

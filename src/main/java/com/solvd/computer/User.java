@@ -16,7 +16,6 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-
     public String getFirstName() {
         return firstName;
     }
@@ -24,7 +23,6 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
 
     public User(String name) {
         this.name = name;
