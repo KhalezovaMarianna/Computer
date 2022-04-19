@@ -1,7 +1,8 @@
-package com.solvd.computer;
+package com.solvd.enums;
 
 public enum Users {
-    LENA("Lena", "Volnianko", "19.04.1969");
+    LENA("Lena", "Volnianko", "19.04.1969"),
+    NATASHA("Natasha","Cherbak","02.02.2001");
 
 
     private String name;

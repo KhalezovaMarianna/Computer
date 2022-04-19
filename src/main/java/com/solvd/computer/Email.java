@@ -1,5 +1,6 @@
 package com.solvd.computer;
 
+import com.solvd.enums.TypeOfEmail;
 import com.solvd.exceptions.NameException;
 import com.solvd.exceptions.TextEmailException;
 

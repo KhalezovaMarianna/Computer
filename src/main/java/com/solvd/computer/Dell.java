@@ -15,14 +15,17 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     private String processor;
     private double battery;
     private String mouse;
+
     public enum diagonal {
-    PC("27"), LAPTOP("24"),MINI_LAPTOP("21");
+        PC("27"), LAPTOP("24"), MINI_LAPTOP("21");
 
         diagonal(String inch) {
         }
     }
+
     public Dell() {
     }
+
     private ArrayList<Integer> batteryNumber = new ArrayList<Integer>();
     private final Random generator = new Random();
 
@@ -34,7 +37,6 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     public String toString() {
         return batteryNumber.toString();
     }
-
 
 
     public String getMouse() {
@@ -116,8 +118,7 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     public void showMouseModel() throws Exception {
         if (mouse == null) {
             throw new MouseModelException("Model isn't find");
-        }
-        else {
+        } else {
             LOGGER.info(getMouse());
         }
     }

@@ -1,9 +1,8 @@
 package com.solvd.computer;
 
+import com.solvd.enums.TypeOfEmail;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import static com.solvd.computer.TypeOfEmail.*;
 
 public abstract class Computer implements ILaunch, IShutDown {
     private static final Logger LOGGER = LogManager.getLogger(Computer.class);

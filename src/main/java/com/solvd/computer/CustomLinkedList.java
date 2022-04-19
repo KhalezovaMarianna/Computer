@@ -1,4 +1,5 @@
 package com.solvd.computer;
+
 import java.util.*;
 
 public class CustomLinkedList<E> extends AbstractSequentialList<E>

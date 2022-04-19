@@ -1,4 +1,4 @@
-package com.solvd.computer;
+package com.solvd.enums;
 
 public enum TypeOfEmail {
 
