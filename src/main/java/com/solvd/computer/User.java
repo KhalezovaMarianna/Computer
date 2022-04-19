@@ -1,8 +1,12 @@
 package com.solvd.computer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
 public class User {
+    private static final Logger LOGGER = LogManager.getLogger(User.class);
 
     private String name;
     private String firstName;
@@ -35,7 +39,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,5 +50,10 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(name, firstName, dateOfBirth);
+    }
+
+    IEnableIncognito s = ()->LOGGER.info("Incognito mode enable");
+    public void enableIncognitoMode() {
+    s.enableIncognitoMode();
     }
 }
