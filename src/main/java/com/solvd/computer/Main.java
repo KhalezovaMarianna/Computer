@@ -18,12 +18,42 @@ public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
-        MyThread myThread = new MyThread();
+        Dell lock1 = new Dell();
+        Dell lock2 = new Dell();
+        Thread myThread = new Thread(() -> {
+            LOGGER.info(Thread.currentThread().getName() + "start");
+            synchronized (lock1) {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                synchronized (lock2) {
+
+                }
+            }
+            LOGGER.info(Thread.currentThread().getName() + "end");
+        },
+                "MyThread");
+
+
+        Thread thread2 = new Thread(() -> {
+            LOGGER.info(Thread.currentThread().getName() + "start");
+            synchronized (lock2) {
+
+                synchronized (lock1) {
+
+                }
+            }
+            MyRunnable myRunnable = new MyRunnable();
+            Thread thread =new Thread(myRunnable);
+            thread.start();
+
+            LOGGER.info(Thread.currentThread().getName() + "end");
+        }, "Thread2");
         myThread.start();
-        LOGGER.info(Thread.currentThread().getName());
-        MyRunnable myRunnable = new MyRunnable();
-        Thread thread2 = new Thread(myRunnable);
         thread2.start();
+
         IDoSomething f = () -> LOGGER.info("Hello from Computer");
         f.doSmth();
         IBroken s = () -> LOGGER.info("Processor hasn't found");
@@ -123,6 +153,7 @@ public class Main {
         }
         int windowsIndex = Asus.OperationSystem.WINDOWS.ordinal();
         LOGGER.info(windowsIndex);
+
 
     }
 }
