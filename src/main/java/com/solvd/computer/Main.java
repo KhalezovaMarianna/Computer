@@ -18,12 +18,20 @@ public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws Exception {
+        MyThread myThread = new MyThread();
+        myThread.start();
+        LOGGER.info(Thread.currentThread().getName());
+        MyRunnable myRunnable = new MyRunnable();
+        Thread thread2 = new Thread(myRunnable);
+        thread2.start();
         IDoSomething f = () -> LOGGER.info("Hello from Computer");
         f.doSmth();
         IBroken s = () -> LOGGER.info("Processor hasn't found");
         s.processorIsBroken();
         ISendAlert a = () -> LOGGER.info("Alert was send");
         a.sendAlert();
+        Searchable d = () -> LOGGER.info(Dell.diagonal.LAPTOP);
+
         try {
             File file = new File("C:/Users/Marianna/IdeaProjects/Task_4/src/main/resources/Hello.txt");
             String string = StringUtils.lowerCase(FileUtils.readFileToString(file, StandardCharsets.UTF_8)).replaceAll("\\s*(\\s|,|!|\\.)\\s*", " ");

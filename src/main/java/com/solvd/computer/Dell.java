@@ -16,7 +16,7 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     private double battery;
     private String mouse;
 
-    public enum diagonal {
+    public enum diagonal{
         PC("27"), LAPTOP("24"), MINI_LAPTOP("21");
 
         diagonal(String inch) {
@@ -128,6 +128,6 @@ public class Dell extends Computer implements ICheckingTheWebcam {
         super.typeOfEmail();
     }
 
-    Searchable s = (Dell b) -> b.getBattery() > 0;
+
 }
 

@@ -10,7 +10,7 @@ public class MacBook extends Computer implements ILoginID {
     private static final Logger LOGGER = LogManager.getLogger(MacBook.class);
     private String model;
     private String operationSystem;
-    private static final String NAMEMODEL = "MacBook air";
+    private static final String NAME_MODEL = "MacBook air";
 
     static {
         LOGGER.info(" You switched to control MacBook air ");
@@ -50,7 +50,7 @@ public class MacBook extends Computer implements ILoginID {
     }
 
     public static void checkModel() {
-        LOGGER.info(NAMEMODEL);
+        LOGGER.info(NAME_MODEL);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MacBook extends Computer implements ILoginID {
 
     @Override
     public void login() {
-        LOGGER.info(NAMEMODEL + " ID recognized ");
+        LOGGER.info(NAME_MODEL + " ID recognized ");
     }
 
     @Override
