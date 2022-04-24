@@ -127,4 +127,7 @@ public class Dell extends Computer implements ICheckingTheWebcam {
     public void typeOfEmail() {
         super.typeOfEmail();
     }
+
+    Searchable s = (Dell b) -> b.getBattery() > 0;
 }
+

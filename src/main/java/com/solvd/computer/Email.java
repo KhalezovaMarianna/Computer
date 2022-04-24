@@ -3,8 +3,11 @@ package com.solvd.computer;
 import com.solvd.enums.TypeOfEmail;
 import com.solvd.exceptions.NameException;
 import com.solvd.exceptions.TextEmailException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Email {
+    private static final Logger LOGGER = LogManager.getLogger(Email.class);
     private String text;
     private String name;
     private String email;

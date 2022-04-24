@@ -39,6 +39,7 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,8 +53,9 @@ public class User {
         return Objects.hash(name, firstName, dateOfBirth);
     }
 
-    IEnableIncognito s = ()->LOGGER.info("Incognito mode enable");
+    IEnableIncognito s = () -> LOGGER.info("Incognito mode enable");
+
     public void enableIncognitoMode() {
-    s.enableIncognitoMode();
+        s.enableIncognitoMode();
     }
 }

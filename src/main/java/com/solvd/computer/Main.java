@@ -22,6 +22,8 @@ public class Main {
         f.doSmth();
         IBroken s = () -> LOGGER.info("Processor hasn't found");
         s.processorIsBroken();
+        ISendAlert a = () -> LOGGER.info("Alert was send");
+        a.sendAlert();
         try {
             File file = new File("C:/Users/Marianna/IdeaProjects/Task_4/src/main/resources/Hello.txt");
             String string = StringUtils.lowerCase(FileUtils.readFileToString(file, StandardCharsets.UTF_8)).replaceAll("\\s*(\\s|,|!|\\.)\\s*", " ");
