@@ -38,3 +38,42 @@ ALTER TABLE Garage ALTER COLUMN MaxWorkers SET DEFAULT 22;
 ALTER TABLE Garage DROP COLUMN MaxWorkers;
 ALTER TABLE Admins MODIFY COLUMN FirstName CHAR(100) NULL;
 ALTER TABLE Employeers ADD MinAge int;
+SELECT Garage.Adress FROM Garage JOIN Masters ON Masters.idMasters = Garage.idGarage;
+SELECT FirstName, Name, TelefonNumber FROM Diagnosts LEFT outer JOIN Clients ON Clients.TelefonNumber = Diagnosts.TelefonNumber;
+SELECT FirstName, Name, TelefonNumber FROM Masters right outer JOIN Clients ON Clients.TelefonNumber = Masters.TelefonNumber and Clients.FirstName=Masters.FirstName;
+SELECT Admins.FirstName, Clients.Name
+FROM Admins, Clients
+WHERE Admins.TelefonNumber = Clients.TelefonNumber;
+SELECT Masters.FirstName, Admins.FirstName 
+FROM Masters, Admins
+WHERE Masters.TelefonNumber=Admins.TelefonNumber;
+SELECT Name,FirstName
+FROM Clients
+GROUP BY Name
+HAVING TelefonNumber ='+375293435382';
+SELECT Name, FirstName
+FROM Deagnosts
+GROUP BY FirstName
+HAVING TelefonNumber = null;
+SELECT Model
+FROM Auto
+GROUP BY Model
+HAVING StateNumber='1234';
+SELECT Name,FirstName
+FROM Masters
+GROUP BY FirstName
+HAVING idMasters > 2 ;
+SELECT Adress, idGarage
+FROM Garage
+GROUP BY Adress
+HAVING Adress != null;
+SELECT Salary
+FROM Salaries
+GROUP BY Salary
+HAVING Salary>200;
+SELECT Cost
+FROM Costs
+GROUP BY Cost
+HAVING Cost < 1995;
+
+   
