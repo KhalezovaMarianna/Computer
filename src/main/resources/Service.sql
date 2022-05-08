@@ -46,11 +46,27 @@ ALTER TABLE Employeers ALTER COLUMN MinAge SET DEFAULT 17;
 
 
 SELECT Garages.Adress FROM Garages JOIN Masters ON Masters.idMasters = Garages.idGarage;
-SELECT  idClients FROM Diagnosts LEFT outer JOIN Clients ON Clients.TelefonNumber = Diagnosts.TelefonNumber;
-SELECT FirstName, Name, TelefonNumber FROM Masters right outer JOIN Clients ON Clients.idClients = Masters.idMasters;
-SELECT Admins.FirstName, Clients.Name FROM Admins, Clients WHERE Admins.TelefonNumber = Clients.TelefonNumber;
-SELECT Masters.FirstName, Admins.FirstName FROM Masters, Admins WHERE Masters.TelefonNumber=Admins.TelefonNumber;
+SELECT  idClients FROM Diagnosts LEFT  JOIN Clients ON Clients.TelefonNumber = Diagnosts.TelefonNumber;
+SELECT idMasters FROM Masters right JOIN Clients ON Clients.idClients = Masters.idMasters;
+select * from Costs inner join TimeToWork on  Costs.TimeToWork_idTime=TimeToWork.idTime;
+select * from Auto left outer join Clients on  Auto.StateNumber=Clients.Auto_StateNumber;
 
+
+select Name, max(FirstName) from Clients group by Name ;
+select Name, min(FirstName) from Masters group by Name;
+select count(*) from ActiveTasks group by Clients_idClients ;
+SELECT AVG(TimeToWork) FROM TimeToWork group by TimeToWork;
+SELECT SUM(MaxWorkers) FROM Garages group by Adress;
+select max(Salary) from Salaries group by Employeer;
+select min(distinct Name) from Admins group by TelefonNumber;
+
+SELECT Services, COUNT(*) AS Costs FROM Costs GROUP BY Services HAVING COUNT(*) > 1;
+select Adress, max(MaxWorkers) from Garages group by Adress having max(MaxWorkers)!=null;
+select Name, min(FirstName) from Masters group by idMasters having min(FirstName)!=null;
+select TelefonNumber, Name, max(Name) from Admins group by idAdmins having Max(Name)<2;
+select Model, StateNumber, count(*) from Auto group by StateNumber having Max(StateNumber)!=null;
+select Services_idServices, AVG(TimeToWork) FROM TimeToWork group by idTime having max(TimeToWork)>0;
+select * , max(MaxWorkers) from Garages group by idGarage having max(MaxWorkers)>0;
 
 
 
