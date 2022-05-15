@@ -18,7 +18,7 @@ CREATE SCHEMA IF NOT EXISTS `Service` DEFAULT CHARACTER SET utf8 ;
 USE `Service` ;
 
 -- -----------------------------------------------------
--- Table `Service`.`Auto`
+-- Table `Service`.`Autos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Auto` (
   `StateNumber` INT NOT NULL,
