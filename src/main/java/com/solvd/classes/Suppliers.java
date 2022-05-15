@@ -5,21 +5,18 @@ import org.apache.logging.log4j.Logger;
 
 public class Suppliers {
     private static final Logger LOGGER = LogManager.getLogger(Suppliers.class);
-    private Materials materials;
-    private Materials model;
+    private String model;
     private String country;
 
-    public Suppliers(Materials materials, Materials model, String country) {
-        this.materials = materials;
+    public Suppliers() {
+
         this.model = model;
         this.country = country;
     }
 
-    public Materials getMaterials() {
-        return materials;
-    }
 
-    public Materials getModel() {
+
+    public String getModel() {
         return model;
     }
 
@@ -27,11 +24,9 @@ public class Suppliers {
         return country;
     }
 
-    public void setMaterials(Materials materials) {
-        this.materials = materials;
-    }
 
-    public void setModel(Materials model) {
+
+    public void setModel(String model) {
         this.model = model;
     }
 
@@ -42,8 +37,7 @@ public class Suppliers {
     @Override
     public String toString() {
         return "Suppliers{" +
-                "materials=" + materials +
-                ", model=" + model +
+                "model='" + model + '\'' +
                 ", country='" + country + '\'' +
                 '}';
     }
