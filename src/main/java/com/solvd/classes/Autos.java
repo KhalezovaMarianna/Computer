@@ -8,6 +8,14 @@ public class Autos {
     private int stateNumber;
     private String model;
 
+    public void setStateNumber(int stateNumber) {
+        this.stateNumber = stateNumber;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public Autos(int stateNumber, String model) {
         this.stateNumber = stateNumber;
         this.model = model;

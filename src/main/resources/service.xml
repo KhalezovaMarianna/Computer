@@ -1,4 +1,5 @@
 <services>
+    <service>
     <masters>
         <name>Sasha</name>
         <firstName>Khalezov</firstName>
@@ -32,19 +33,19 @@
     </auto>
     <garage>
         <adress>Yagovkina,108</adress>
-        <maxWorkesrs>3</maxWorkesrs>
+        <maxWorkers>3</maxWorkers>
     </garage>
     <garage>
         <adress>Lenina,20</adress>
-        <maxWorkesrs>15</maxWorkesrs>
+        <maxWorkers>15</maxWorkers>
     </garage>
     <garage>
          <adress>Soveckay,7</adress>
-        <maxWorkesrs>7</maxWorkesrs>
+        <maxWorkers>7</maxWorkers>
     </garage>
     <garage>
         <adress>Sviridova,5</adress>
-        <maxWorkesrs>25</maxWorkesrs>
+        <maxWorkers>25</maxWorkers>
     </garage>
     <clients>
         <name>Masha</name>
@@ -97,4 +98,5 @@
             <model>Geely</model>
         </materials>
     </supplier>
+    </service>
 </services>

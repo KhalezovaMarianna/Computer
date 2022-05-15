@@ -10,12 +10,25 @@ public class Clients {
     private String telefonNumber;
     private Autos auto;
 
-    public Clients(String name, String firstName, String telefonNumber, Autos auto) {
+    public Clients() {
         this.name = name;
         this.firstName = firstName;
         this.telefonNumber = telefonNumber;
         this.auto = auto;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setTelefonNumber(String telefonNumber) {
+        this.telefonNumber = telefonNumber;
+    }
+
 
     public String getName() {
         return name;
@@ -29,7 +42,13 @@ public class Clients {
         return telefonNumber;
     }
 
-    public Autos getAuto() {
-        return auto;
+    @Override
+    public String toString() {
+        return "Clients{" +
+                "name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", telefonNumber='" + telefonNumber + '\'' +
+                ", auto=" + auto +
+                '}';
     }
 }

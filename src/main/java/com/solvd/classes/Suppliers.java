@@ -27,6 +27,18 @@ public class Suppliers {
         return country;
     }
 
+    public void setMaterials(Materials materials) {
+        this.materials = materials;
+    }
+
+    public void setModel(Materials model) {
+        this.model = model;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     @Override
     public String toString() {
         return "Suppliers{" +

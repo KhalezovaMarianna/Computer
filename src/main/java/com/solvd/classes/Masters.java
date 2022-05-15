@@ -9,7 +9,7 @@ public class Masters {
     private String firstName;
     private String telefonNumber;
 
-    public Masters(String name, String firstName, String telefonNumber) {
+    public Masters() {
         this.name = name;
         this.firstName = firstName;
         this.telefonNumber = telefonNumber;
@@ -26,6 +26,18 @@ public class Masters {
 
     public String getTelefonNumber() {
         return telefonNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setTelefonNumber(String telefonNumber) {
+        this.telefonNumber = telefonNumber;
     }
 
     @Override

@@ -21,6 +21,14 @@ public class Materials {
         return model;
     }
 
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     @Override
     public String toString() {
         return "Materials{" +

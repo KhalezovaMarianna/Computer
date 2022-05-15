@@ -1,3 +1,4 @@
+/*
 package com.solvd.computer;
 
 
@@ -159,3 +160,4 @@ public class Main {
 }
 
 
+*/

@@ -8,8 +8,16 @@ public class Garages {
     private String adress;
     private int maxWorkers;
 
-    public Garages(String adress, int maxWorkers) {
+    public Garages() {
         this.adress = adress;
+        this.maxWorkers = maxWorkers;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public void setMaxWorkers(int maxWorkers) {
         this.maxWorkers = maxWorkers;
     }
 
