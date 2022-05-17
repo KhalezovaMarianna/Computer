@@ -4,12 +4,13 @@ import com.solvd.classes.Clients;
 import com.solvd.classes.Garages;
 import com.solvd.classes.Masters;
 import com.solvd.classes.Suppliers;
+import com.solvd.dao.GaragesDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,13 +18,14 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
     private static final Logger LOGGER = LogManager.getLogger(Service.class);
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
         Document doc = builder.parse(new File(System.getProperty("user.dir") + "/src/main/resources/service.xml"));
@@ -50,15 +52,22 @@ public class Service {
         LOGGER.info(clients);
         int index = nodeList.getLength();
         List<Suppliers> supplier = new ArrayList<>();
-        for (int i=0; i < index; i++){
+        for (int i = 0; i < index; i++) {
             Suppliers suppliers = new Suppliers();
             Node node1 = nodeList.item(i);
             Element suppliersElement = (Element) node1;
             suppliers.setModel(suppliersElement.getElementsByTagName("model").item(i).getTextContent());
             suppliers.setCountry(suppliersElement.getElementsByTagName("country").item(i).getTextContent());
             supplier.add(suppliers);
+
+
         }
         LOGGER.info(supplier);
+        Garages garages = new Garages("Zapupkino", 228);
+        GaragesDAO garagesDAO = new GaragesDAO();
+        int id = 1;
+        //garagesDAO.save(garages);
+        garagesDAO.findById(id);
     }
 
 }
