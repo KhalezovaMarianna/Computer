@@ -5,11 +5,13 @@ import org.apache.logging.log4j.Logger;
 
 public class Masters {
     private static final Logger LOGGER = LogManager.getLogger(Masters.class);
+    private int idMasters;
     private String name;
     private String firstName;
     private String telefonNumber;
 
     public Masters() {
+        this.idMasters=idMasters;
         this.name = name;
         this.firstName = firstName;
         this.telefonNumber = telefonNumber;
@@ -40,10 +42,19 @@ public class Masters {
         this.telefonNumber = telefonNumber;
     }
 
+    public int getIdMasters() {
+        return idMasters;
+    }
+
+    public void setIdMasters(int idMasters) {
+        this.idMasters = idMasters;
+    }
+
     @Override
     public String toString() {
         return "Masters{" +
-                "name='" + name + '\'' +
+                "idMasters=" + idMasters +
+                ", name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", telefonNumber='" + telefonNumber + '\'' +
                 '}';

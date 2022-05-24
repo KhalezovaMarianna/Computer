@@ -4,7 +4,7 @@ import com.solvd.classes.Clients;
 import com.solvd.classes.Garages;
 import com.solvd.classes.Masters;
 import com.solvd.classes.Suppliers;
-import com.solvd.dao.GaragesDAO;
+import com.solvd.jdbc.GarageDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -63,8 +63,8 @@ public class Service {
 
         }
         LOGGER.info(supplier);
-        Garages garages = new Garages("Zapupkino", 228);
-        GaragesDAO garagesDAO = new GaragesDAO();
+        Garages garages = new Garages(2,"Zapupkino", 228);
+        GarageDAO garagesDAO = new GarageDAO();
         int id = 1;
         //garagesDAO.save(garages);
         garagesDAO.findById(id);

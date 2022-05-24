@@ -5,12 +5,14 @@ import org.apache.logging.log4j.Logger;
 
 public class Clients {
     private static final Logger LOGGER = LogManager.getLogger(Clients.class);
+    private int idClients;
     private String name;
     private String firstName;
     private String telefonNumber;
     private Autos auto;
 
     public Clients() {
+        this.idClients = idClients;
         this.name = name;
         this.firstName = firstName;
         this.telefonNumber = telefonNumber;
@@ -29,7 +31,6 @@ public class Clients {
         this.telefonNumber = telefonNumber;
     }
 
-
     public String getName() {
         return name;
     }
@@ -42,10 +43,27 @@ public class Clients {
         return telefonNumber;
     }
 
+    public int getIdClients() {
+        return idClients;
+    }
+
+    public void setIdClients(int idClients) {
+        this.idClients = idClients;
+    }
+
+    public Autos getAuto() {
+        return auto;
+    }
+
+    public void setAuto(Autos auto) {
+        this.auto = auto;
+    }
+
     @Override
     public String toString() {
         return "Clients{" +
-                "name='" + name + '\'' +
+                "idClients=" + idClients +
+                ", name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", telefonNumber='" + telefonNumber + '\'' +
                 ", auto=" + auto +
