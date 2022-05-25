@@ -50,31 +50,100 @@ public class GarageDAO extends AbstractClassJDBC implements IGarageDAO {
 
     @Override
     public Garages getEntityById(int id) throws SQLException {
-        return null;
+        try {
+            connection = getConnectionPool().takeConnection();
+            pr = connection.prepareStatement("select * from Garages  where id=?");
+            pr.setInt(1, id);
+            pr.execute();
+            LOGGER.info("it is a select");
+        } catch (SQLException e) {
+            LOGGER.info(e);
+        } finally {
+
+            getConnectionPool().returnConnection(connection);
+            try {
+                if (pr != null) {
+                    pr.close();
+                }
+            } catch (SQLException e) {
+                LOGGER.info(e);
+            }
+        }
+        return getEntityById(1);
     }
 
-    @Override
-    public void save(Garages entity) throws SQLException {
-
-    }
 
     @Override
     public void createEntity(Garages entity) {
+        try {
+            connection = getConnectionPool().takeConnection();
+            pr = connection.prepareStatement("insert into Garages(maxWorkers) values (?)");
+            resultSet = pr.getResultSet();
+            pr.setInt(1, resultSet.getInt("maxWorkers"));
+            pr.execute();
+            LOGGER.info("has been insert");
+        } catch (SQLException e) {
+            LOGGER.info(e);
+        } finally {
 
+            getConnectionPool().returnConnection(connection);
+            try {
+                if (pr != null) {
+                    pr.close();
+                }
+            } catch (SQLException e) {
+                LOGGER.info(e);
+            }
+        }
     }
 
     @Override
     public void updateEntity(Garages entity) {
+        try {
+            connection = getConnectionPool().takeConnection();
+            pr = connection.prepareStatement("update Garages set adress=?,maxWorkers=? where id=?");
+            pr.setString(1, entity.getAdress());
+            pr.setInt(2, entity.getMaxWorkers());
+            pr.setInt(3, entity.getIdGarage());
+            pr.executeUpdate();
+            LOGGER.info("Garages data has been update");
+        } catch (SQLException e) {
+            LOGGER.info(e);
+        } finally {
 
+            getConnectionPool().returnConnection(connection);
+            try {
+                if (pr != null) {
+                    pr.close();
+                }
+            } catch (SQLException e) {
+                LOGGER.info(e);
+            }
+        }
     }
 
     @Override
-    public void removeEntity(Garages entity) throws SQLException {
+    public void removeEntity(Garages entity) {
+        try {
+            connection = getConnectionPool().takeConnection();
+            pr = connection.prepareStatement("delete from Garages where id=?");
+            pr.setInt(1, entity.getIdGarage());
+            pr.executeUpdate();
+            LOGGER.info("Garages data has been delete");
+        } catch (SQLException e) {
+            LOGGER.info(e);
+        } finally {
+
+            getConnectionPool().returnConnection(connection);
+            try {
+                if (pr != null) {
+                    pr.close();
+                }
+            } catch (SQLException e) {
+                LOGGER.info(e);
+            }
+        }
 
     }
 
-    @Override
-    public void findById(int id) throws SQLException {
-
-    }
 }
