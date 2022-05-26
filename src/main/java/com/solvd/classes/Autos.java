@@ -12,8 +12,9 @@ public class Autos {
         this.stateNumber = stateNumber;
     }
 
-    public void setModel(String model) {
+    public Autos setModel(String model) {
         this.model = model;
+        return null;
     }
 
     public Autos() {
