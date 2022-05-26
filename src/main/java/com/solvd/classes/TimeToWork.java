@@ -8,7 +8,7 @@ public class TimeToWork {
     private int idTime;
     private double timeToWork;
 
-    public TimeToWork(int idTime, double timeToWork) {
+    public TimeToWork() {
         this.idTime = idTime;
         this.timeToWork = timeToWork;
     }

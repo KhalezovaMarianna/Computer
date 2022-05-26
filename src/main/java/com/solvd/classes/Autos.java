@@ -16,7 +16,7 @@ public class Autos {
         this.model = model;
     }
 
-    public Autos(int stateNumber, String model) {
+    public Autos() {
         this.stateNumber = stateNumber;
         this.model = model;
     }

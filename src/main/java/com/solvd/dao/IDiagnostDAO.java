@@ -1,4 +1,10 @@
 package com.solvd.dao;
 
-public interface IDiagnostDAO {
+import com.solvd.classes.Diagnosts;
+import com.solvd.classes.Masters;
+
+import java.util.List;
+
+public interface IDiagnostDAO extends IBaseDAO<Diagnosts>{
+    List<Diagnosts> getAllDiagnosts();
 }
