@@ -1,5 +1,7 @@
-package com.solvd.classes;
+package com.solvd.parser.models;
 
+import com.solvd.classes.Clients;
+import com.solvd.classes.Services;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

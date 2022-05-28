@@ -65,9 +65,7 @@ public class Service {
         LOGGER.info(supplier);
         Garages garages = new Garages(2,"Zapupkino", 228);
         GarageDAO garagesDAO = new GarageDAO();
-        int id = 1;
-        //garagesDAO.save(garages);
-        garagesDAO.findById(id);
+        garagesDAO.getEntityById(1);
     }
 
 }
