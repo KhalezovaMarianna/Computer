@@ -1,29 +1,19 @@
-package com.solvd.classes;
+package com.solvd.parser.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
+
+@XmlType(propOrder = {"name", "firstName", "telefonNumber"})
 public class Admins {
     private static final Logger LOGGER = LogManager.getLogger(Admins.class);
-    private int idAdmins;
     private String name;
     private String firstName;
     private String telefonNumber;
-
-    public Admins(int idAdmins, String name, String firstName, String telefonNumber) {
-        this.idAdmins = idAdmins;
-        this.name = name;
-        this.firstName = firstName;
-        this.telefonNumber = telefonNumber;
-    }
-
-    public int getIdAdmins() {
-        return idAdmins;
-    }
-
-    public void setIdAdmins(int idAdmins) {
-        this.idAdmins = idAdmins;
-    }
 
     public String getName() {
         return name;
@@ -50,10 +40,22 @@ public class Admins {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Admins admins = (Admins) o;
+        return Objects.equals(name, admins.name) && Objects.equals(firstName, admins.firstName) && Objects.equals(telefonNumber, admins.telefonNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, firstName, telefonNumber);
+    }
+
+    @Override
     public String toString() {
         return "Admins{" +
-                "idAdmins=" + idAdmins +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", telefonNumber='" + telefonNumber + '\'' +
                 '}';

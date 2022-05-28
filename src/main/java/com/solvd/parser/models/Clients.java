@@ -1,18 +1,20 @@
-package com.solvd.classes;
+package com.solvd.parser.models;
 
+import com.solvd.classes.Autos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
+
 public class Clients {
     private static final Logger LOGGER = LogManager.getLogger(Clients.class);
-    private int idClients;
+
     private String name;
     private String firstName;
     private String telefonNumber;
     private Autos auto;
 
     public Clients() {
-        this.idClients = idClients;
         this.name = name;
         this.firstName = firstName;
         this.telefonNumber = telefonNumber;
@@ -43,13 +45,6 @@ public class Clients {
         return telefonNumber;
     }
 
-    public int getIdClients() {
-        return idClients;
-    }
-
-    public void setIdClients(int idClients) {
-        this.idClients = idClients;
-    }
 
     public Autos getAuto() {
         return auto;
@@ -60,10 +55,22 @@ public class Clients {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clients clients = (Clients) o;
+        return Objects.equals(name, clients.name) && Objects.equals(firstName, clients.firstName) && Objects.equals(telefonNumber, clients.telefonNumber) && Objects.equals(auto, clients.auto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, firstName, telefonNumber, auto);
+    }
+
+    @Override
     public String toString() {
         return "Clients{" +
-                "idClients=" + idClients +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", telefonNumber='" + telefonNumber + '\'' +
                 ", auto=" + auto +

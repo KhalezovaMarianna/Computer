@@ -1,7 +1,8 @@
 package com.solvd.jaxb;
 
 import com.solvd.classes.*;
-import com.solvd.parser.Service;
+import com.solvd.parser.models.Clients;
+import com.solvd.parser.models.Services;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

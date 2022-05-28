@@ -1,5 +1,6 @@
 package com.solvd.classes;
 
+import com.solvd.parser.models.Admins;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

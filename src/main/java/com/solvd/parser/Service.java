@@ -1,6 +1,6 @@
 package com.solvd.parser;
 
-import com.solvd.classes.Clients;
+import com.solvd.parser.models.Clients;
 import com.solvd.classes.Garages;
 import com.solvd.classes.Masters;
 import com.solvd.classes.Suppliers;

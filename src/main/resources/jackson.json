@@ -3,20 +3,17 @@
   "name" : "Sasha",
   "address" : "Lenina 2",
   "employeers" : [ {
-    "masters" : {
+    "admins" : {
       "name" : "Nikita",
       "firstName" : "Tamodlin",
       "telefonNumber" : "+375293435382"
     }
   } ],
-  "activeTask" : [ {
+  "task" : [ {
     "services" : [ {
       "timeToWork" : 2.5,
       "service" : "change oil",
       "dateOfChange" : "02/02/2021"
-    }, {
-      "supplier" : "BMW",
-      "material" :"oil"
     } ],
     "clients":[{
       "name": "Masha",

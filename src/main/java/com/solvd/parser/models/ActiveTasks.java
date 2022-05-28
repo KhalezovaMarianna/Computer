@@ -1,52 +1,102 @@
 package com.solvd.parser.models;
 
-import com.solvd.classes.Clients;
-import com.solvd.classes.Services;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+@XmlRootElement(name = "activeTasks")
+@XmlType(propOrder = {"id", "name", "address", "employeers", "task"})
+@JsonPropertyOrder({"id", "name", "address", "employeers", "task"})
+
 public class ActiveTasks {
     private static final Logger LOGGER = LogManager.getLogger(ActiveTasks.class);
-    private int idActiveTasks;
-    private Services services_idServices;
-    private Clients clients_idClients;
 
-    public ActiveTasks(int idActiveTasks, Services services_idServices, Clients clients_idClients) {
-        this.idActiveTasks = idActiveTasks;
-        this.services_idServices = services_idServices;
-        this.clients_idClients = clients_idClients;
+        @JsonProperty
+        private int id;
+        @JsonProperty
+        private String name;
+        @JsonProperty
+        private String address;
+        @JsonProperty
+        private List<Employeers> employeers = new ArrayList<>();
+        @JsonProperty
+        private List<Task> task = new ArrayList<>();
+
+        public ActiveTasks() {
+        }
+
+    public int getId() {
+        return id;
+    }
+@XmlAttribute
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getIdActiveTasks() {
-        return idActiveTasks;
+    public String getName() {
+        return name;
+    }
+@XmlElement
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setIdActiveTasks(int idActiveTasks) {
-        this.idActiveTasks = idActiveTasks;
+    public String getAddress() {
+        return address;
+    }
+@XmlElement
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Services getServices_idServices() {
-        return services_idServices;
+    public List<Employeers> getEmployeers() {
+        return employeers;
+    }
+@XmlElement
+    public void setEmployeers(List<Employeers> employeers) {
+        this.employeers = employeers;
     }
 
-    public void setServices_idServices(Services services_idServices) {
-        this.services_idServices = services_idServices;
+    public List<Task> getTask() {
+        return task;
     }
-
-    public Clients getClients_idClients() {
-        return clients_idClients;
-    }
-
-    public void setClients_idClients(Clients clients_idClients) {
-        this.clients_idClients = clients_idClients;
+@XmlElement
+    public void setTask(List<Task> task) {
+        this.task = task;
     }
 
     @Override
     public String toString() {
         return "ActiveTasks{" +
-                "idActiveTasks=" + idActiveTasks +
-                ", services_idServices=" + services_idServices +
-                ", clients_idClients=" + clients_idClients +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", employeers=" + employeers +
+                ", task=" + task +
                 '}';
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ActiveTasks that = (ActiveTasks) o;
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(address, that.address) && Objects.equals(employeers, that.employeers) && Objects.equals(task, that.task);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address, employeers, task);
     }
 }
+
