@@ -1,16 +1,17 @@
-package com.solvd.parser;
+package com.solvd.parser.dom;
 
-import com.solvd.parser.models.Clients;
 import com.solvd.serviceStation.classes.Garages;
 import com.solvd.serviceStation.classes.Masters;
 import com.solvd.serviceStation.classes.Suppliers;
-import com.solvd.serviceStation.dao.jdbcMySQLImpl.GarageDAO;
+import com.solvd.exceptions.ProcessorException;
+import com.solvd.parser.models.Clients;
+import com.solvd.parser.models.Services;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,39 +19,72 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Service {
-    private static final Logger LOGGER = LogManager.getLogger(Service.class);
+public class DomParser {
+    private static final Logger LOGGER = LogManager.getLogger(DomParser.class);
 
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException, SQLException {
+    Services services = new Services();
+    Masters masters = new Masters();
+    Garages garage = new Garages();
+    Clients clients = new Clients();
+
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
+    }
+
+    public Masters getMasters() {
+        return masters;
+    }
+
+    public void setMasters(Masters masters) {
+        this.masters = masters;
+    }
+
+    public Garages getGarage() {
+        return garage;
+    }
+
+    public void setGarage(Garages garage) {
+        this.garage = garage;
+    }
+
+    public Clients getClients() {
+        return clients;
+    }
+
+    public void setClients(Clients clients) {
+        this.clients = clients;
+    }
+
+    public void parse() throws ParserConfigurationException, IOException, SAXException, ProcessorException {
+
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
         Document doc = builder.parse(new File(System.getProperty("user.dir") + "/src/main/resources/service.xml"));
         NodeList nodeList = doc.getElementsByTagName("service");
         nodeList.getLength();
-        Service service = new Service();
-        Masters masters = new Masters();
         Node node = nodeList.item(0);
         Element element = (Element) node;
         masters.setName(element.getElementsByTagName("name").item(0).getTextContent());
         masters.setFirstName(element.getElementsByTagName("firstName").item(0).getTextContent());
         masters.setTelefonNumber(element.getElementsByTagName("telefonNumber").item(0).getTextContent());
-        LOGGER.info(masters);
         Element garageElement = (Element) node;
-        Garages garage = new Garages();
         garage.setMaxWorkers(Integer.parseInt(garageElement.getElementsByTagName("maxWorkers").item(0).getTextContent()));
         garage.setAdress(garageElement.getElementsByTagName("adress").item(0).getTextContent());
-        LOGGER.info(garage);
         Element clientsElement = (Element) node;
-        Clients clients = new Clients();
         clients.setFirstName(clientsElement.getElementsByTagName("firstName").item(0).getTextContent());
         clients.setName(clientsElement.getElementsByTagName("name").item(0).getTextContent());
         clients.setTelefonNumber(clientsElement.getElementsByTagName("telefonNumber").item(0).getTextContent());
-        LOGGER.info(clients);
+
+
         int index = nodeList.getLength();
+
         List<Suppliers> supplier = new ArrayList<>();
         for (int i = 0; i < index; i++) {
             Suppliers suppliers = new Suppliers();
@@ -59,13 +93,10 @@ public class Service {
             suppliers.setModel(suppliersElement.getElementsByTagName("model").item(i).getTextContent());
             suppliers.setCountry(suppliersElement.getElementsByTagName("country").item(i).getTextContent());
             supplier.add(suppliers);
-
-
         }
-        LOGGER.info(supplier);
-        Garages garages = new Garages(2,"Zapupkino", 228);
-        GarageDAO garagesDAO = new GarageDAO();
-        garagesDAO.getEntityById(1);
+        LOGGER.info(services);
     }
-
+    public Services takeServices(){
+        return services;
+    }
 }
