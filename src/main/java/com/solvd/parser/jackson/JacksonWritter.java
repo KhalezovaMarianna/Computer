@@ -21,7 +21,7 @@ public class JacksonWritter {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         try {
             List<ActiveTasks> activeTasks = new ArrayList<>();
-            activeTasks.add( tasks);
+            activeTasks.add(tasks);
             objectMapper.writeValue(file, activeTasks);
             LOGGER.info("Serialization succesfull to: " + file.getPath());
         } catch (JsonProcessingException e) {
@@ -31,9 +31,7 @@ public class JacksonWritter {
         }
     }
 
-    public static void deserialize()  {
-//        ActiveTasks activeTasks = new ObjectMapper().readValue(json, ActiveTasks.class);
-//        return activeTasks;
+    public static void deserialize() {
 
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         JavaType type = objectMapper.getTypeFactory().constructCollectionType(List.class, ActiveTasks.class);

@@ -20,24 +20,25 @@ import java.util.Objects;
 public class ActiveTasks {
     private static final Logger LOGGER = LogManager.getLogger(ActiveTasks.class);
 
-        @JsonProperty
-        private int id;
-        @JsonProperty
-        private String name;
-        @JsonProperty
-        private String address;
-        @JsonProperty
-        private List<Employeers> employeers = new ArrayList<>();
-        @JsonProperty
-        private List<Task> task = new ArrayList<>();
+    @JsonProperty
+    private int id;
+    @JsonProperty
+    private String name;
+    @JsonProperty
+    private String address;
+    @JsonProperty
+    private List<Employeers> employeers = new ArrayList<>();
+    @JsonProperty
+    private List<Task> task = new ArrayList<>();
 
-        public ActiveTasks() {
-        }
+    public ActiveTasks() {
+    }
 
     public int getId() {
         return id;
     }
-@XmlAttribute
+
+    @XmlAttribute
     public void setId(int id) {
         this.id = id;
     }
@@ -45,7 +46,8 @@ public class ActiveTasks {
     public String getName() {
         return name;
     }
-@XmlElement
+
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -53,7 +55,8 @@ public class ActiveTasks {
     public String getAddress() {
         return address;
     }
-@XmlElement
+
+    @XmlElement
     public void setAddress(String address) {
         this.address = address;
     }
@@ -61,7 +64,8 @@ public class ActiveTasks {
     public List<Employeers> getEmployeers() {
         return employeers;
     }
-@XmlElement
+
+    @XmlElement
     public void setEmployeers(List<Employeers> employeers) {
         this.employeers = employeers;
     }
@@ -69,7 +73,8 @@ public class ActiveTasks {
     public List<Task> getTask() {
         return task;
     }
-@XmlElement
+
+    @XmlElement
     public void setTask(List<Task> task) {
         this.task = task;
     }

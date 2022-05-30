@@ -10,7 +10,7 @@ public class Diagnosts {
     private String firstName;
     private String telefonNumber;
 
-    public Diagnosts() {
+    public Diagnosts(int idDiagnosts, String name , String firstName,String telefonNumber) {
         this.idDiagnosts = idDiagnosts;
         this.name = name;
         this.firstName = firstName;

@@ -17,7 +17,7 @@ public class JaxbWritter {
 
     public static void marshal(ActiveTasks activeTasks) {
         try {
-            JAXBContext context = JAXBContext.newInstance(Services.class);
+            JAXBContext context = JAXBContext.newInstance(ActiveTasks.class);
             Marshaller mar = context.createMarshaller();
             mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             mar.marshal(activeTasks, new File(System.getProperty("user.dir") + "/src/main/resources/serviceJaxb.xml"));
@@ -26,7 +26,7 @@ public class JaxbWritter {
         }
     }
     public static ActiveTasks unmarhall() throws FileNotFoundException, JAXBException {
-        JAXBContext context = JAXBContext.newInstance(Services.class);
+        JAXBContext context = JAXBContext.newInstance(ActiveTasks.class);
         return (ActiveTasks) context.createUnmarshaller()
                 .unmarshal(new FileReader(System.getProperty("user.dir") + "/src/main/resources/serviceJaxb.xml"));
     }

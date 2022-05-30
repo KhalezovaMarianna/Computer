@@ -76,18 +76,18 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
 
 
     @Override
-    public void createEntity(Autos entity) {
+    public void saveEntity(Autos entity) {
         try {
             connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("insert into Autos(model) values (?)");
+            pr = connection.prepareStatement("Insert into autos (stateNumber, model) Values (?,?)");
             resultSet = pr.getResultSet();
-            pr.setInt(1, resultSet.getInt("model"));
+            pr.setInt(1, entity.getStateNumber());
+            pr.setString(2, entity.getModel());
             pr.execute();
-            LOGGER.info("has been insert");
+            LOGGER.info("has been save");
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
             getConnectionPool().returnConnection(connection);
             try {
                 if (pr != null) {
@@ -98,6 +98,7 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
             }
         }
     }
+
 
     @Override
     public void updateEntity(Autos entity) {

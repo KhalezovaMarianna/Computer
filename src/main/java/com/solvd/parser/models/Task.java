@@ -17,8 +17,7 @@ public class Task {
         this.services = services;
     }
 
-    @XmlElement(name ="service")
-
+    @XmlElement(name = "service")
 
     public List<Clients> getClients() {
         return clients;

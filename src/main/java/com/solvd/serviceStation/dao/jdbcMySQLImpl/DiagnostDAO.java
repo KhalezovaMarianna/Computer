@@ -16,7 +16,7 @@ public class DiagnostDAO extends AbstractClassJDBC implements IDiagnostDAO {
     private static final Logger LOGGER = LogManager.getLogger(DiagnostDAO.class);
     private Connection connection = null;
     private ResultSet resultSet = null;
-    private Diagnosts d = new Diagnosts();
+    private Diagnosts d = new Diagnosts(1, "Ivan", "Ivanov","+375294567890");
     private PreparedStatement pr = null;
 
     @Override
@@ -56,7 +56,7 @@ public class DiagnostDAO extends AbstractClassJDBC implements IDiagnostDAO {
     public Diagnosts getEntityById(int id) throws SQLException {
         try {
             connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("select * from Diagnosts  where id=?");
+            pr = connection.prepareStatement("select * from diagnosts  where id=?");
             pr.setInt(1, id);
             pr.execute();
             LOGGER.info("it is a select");
@@ -78,7 +78,7 @@ public class DiagnostDAO extends AbstractClassJDBC implements IDiagnostDAO {
 
 
     @Override
-    public void createEntity(Diagnosts entity) {
+    public void saveEntity(Diagnosts entity) {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("insert into Diagnosts(firstName) values (?)");

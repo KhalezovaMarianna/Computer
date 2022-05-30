@@ -76,7 +76,7 @@ public class TimeToWorkDAO extends AbstractClassJDBC implements ITimeToWorkDAO {
 
 
     @Override
-    public void createEntity(TimeToWork entity) {
+    public void saveEntity(TimeToWork entity) {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("insert into TimeToWork(timeToWork) values (?)");

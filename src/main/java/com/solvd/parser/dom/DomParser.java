@@ -25,14 +25,14 @@ import java.util.List;
 
 public class DomParser {
     private static final Logger LOGGER = LogManager.getLogger(DomParser.class);
-    ActiveTasks activeTasks = new ActiveTasks();
-    Task task = new Task();
-    Admins admins = new Admins();
-    Employeers employeers = new Employeers();
-    List<Employeers> employeerList = new ArrayList<>();
-    List<Task> taskList = new ArrayList<>();
-    List<Services> service = new ArrayList<>();
-    Clients clients = new Clients();
+    private ActiveTasks activeTasks = new ActiveTasks();
+    private Task task = new Task();
+    private Admins admins = new Admins();
+    private Employeers employeers = new Employeers();
+    private List<Employeers> employeerList = new ArrayList<>();
+    private List<Task> taskList = new ArrayList<>();
+    private List<Services> service = new ArrayList<>();
+    private Clients clients = new Clients();
 
     public ActiveTasks getActiveTasks() {
         return activeTasks;
@@ -111,7 +111,7 @@ public class DomParser {
         admins.setTelefonNumber(element1.getElementsByTagName("telefonNumber").item(0).getTextContent());
         employeers.setAdmins(admins);
         employeerList.add(employeers);
-       activeTasks.setEmployeers(employeerList);
+        activeTasks.setEmployeers(employeerList);
         nodeList = doc.getElementsByTagName("services");
 
 
@@ -133,7 +133,7 @@ public class DomParser {
         clients.setFirstName(clientElement.getElementsByTagName("firstName").item(0).getTextContent());
         clients.setName(clientElement.getElementsByTagName("name").item(0).getTextContent());
 
-      taskList.add(task);
+        taskList.add(task);
         activeTasks.setTask(taskList);
 
         LOGGER.info(activeTasks);

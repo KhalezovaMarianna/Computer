@@ -77,7 +77,7 @@ public class MastersDAO extends AbstractClassJDBC implements IMasterDAO {
 
 
     @Override
-    public void createEntity(Masters entity) {
+    public void saveEntity(Masters entity) {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("insert into Masters(firstName) values (?)");

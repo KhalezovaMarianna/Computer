@@ -74,7 +74,7 @@ public class GarageDAO extends AbstractClassJDBC implements IGarageDAO {
 
 
     @Override
-    public void createEntity(Garages entity) {
+    public void saveEntity(Garages entity) {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("insert into Garages(maxWorkers) values (?)");
