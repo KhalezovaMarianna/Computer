@@ -1,11 +1,10 @@
 package com.solvd.parser.dom;
 
+import com.solvd.parser.models.*;
 import com.solvd.serviceStation.classes.Garages;
 import com.solvd.serviceStation.classes.Masters;
 import com.solvd.serviceStation.classes.Suppliers;
 import com.solvd.exceptions.ProcessorException;
-import com.solvd.parser.models.Clients;
-import com.solvd.parser.models.Services;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
@@ -19,39 +18,68 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DomParser {
     private static final Logger LOGGER = LogManager.getLogger(DomParser.class);
-
-    Services services = new Services();
-    Masters masters = new Masters();
-    Garages garage = new Garages();
+    ActiveTasks activeTasks = new ActiveTasks();
+    Task task = new Task();
+    Admins admins = new Admins();
+    Employeers employeers = new Employeers();
+    List<Employeers> employeerList = new ArrayList<>();
+    List<Task> taskList = new ArrayList<>();
+    List<Services> service = new ArrayList<>();
     Clients clients = new Clients();
 
-    public Services getServices() {
-        return services;
+    public ActiveTasks getActiveTasks() {
+        return activeTasks;
     }
 
-    public void setServices(Services services) {
-        this.services = services;
+    public void setActiveTasks(ActiveTasks activeTasks) {
+        this.activeTasks = activeTasks;
     }
 
-    public Masters getMasters() {
-        return masters;
+    public Task getTask() {
+        return task;
     }
 
-    public void setMasters(Masters masters) {
-        this.masters = masters;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
-    public Garages getGarage() {
-        return garage;
+    public Admins getAdmins() {
+        return admins;
     }
 
-    public void setGarage(Garages garage) {
-        this.garage = garage;
+    public void setAdmins(Admins admins) {
+        this.admins = admins;
+    }
+
+    public Employeers getEmployeers() {
+        return employeers;
+    }
+
+    public void setEmployeers(Employeers employeers) {
+        this.employeers = employeers;
+    }
+
+    public List<Employeers> getEmployeerList() {
+        return employeerList;
+    }
+
+    public void setEmployeerList(List<Employeers> employeerList) {
+        this.employeerList = employeerList;
+    }
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
     }
 
     public Clients getClients() {
@@ -62,41 +90,57 @@ public class DomParser {
         this.clients = clients;
     }
 
-    public void parse() throws ParserConfigurationException, IOException, SAXException, ProcessorException {
+    public void parse() throws ParserConfigurationException, IOException, SAXException, ProcessorException, ParseException {
 
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-        Document doc = builder.parse(new File(System.getProperty("user.dir") + "/src/main/resources/service.xml"));
-        NodeList nodeList = doc.getElementsByTagName("service");
-        nodeList.getLength();
-        Node node = nodeList.item(0);
-        Element element = (Element) node;
-        masters.setName(element.getElementsByTagName("name").item(0).getTextContent());
-        masters.setFirstName(element.getElementsByTagName("firstName").item(0).getTextContent());
-        masters.setTelefonNumber(element.getElementsByTagName("telefonNumber").item(0).getTextContent());
-        Element garageElement = (Element) node;
-        garage.setMaxWorkers(Integer.parseInt(garageElement.getElementsByTagName("maxWorkers").item(0).getTextContent()));
-        garage.setAdress(garageElement.getElementsByTagName("adress").item(0).getTextContent());
-        Element clientsElement = (Element) node;
-        clients.setFirstName(clientsElement.getElementsByTagName("firstName").item(0).getTextContent());
-        clients.setName(clientsElement.getElementsByTagName("name").item(0).getTextContent());
-        clients.setTelefonNumber(clientsElement.getElementsByTagName("telefonNumber").item(0).getTextContent());
+        File xmlFile = new File(System.getProperty("user.dir") + "/src/main/resources/service.xml");
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(xmlFile);
+        doc.getDocumentElement().normalize();
+        Element element = doc.getDocumentElement();
+        activeTasks.setId(Integer.parseInt(element.getAttribute("id")));
+        activeTasks.setName(element.getElementsByTagName("name").item(0).getTextContent());
+        activeTasks.setAddress(element.getElementsByTagName("address").item(0).getTextContent());
+        NodeList nodeList = doc.getElementsByTagName("admins");
+        employeers.setAdmins(admins);
+        Node adminsNode = nodeList.item(0);
+        Element element1 = (Element) adminsNode;
+        admins.setName(element1.getElementsByTagName("name").item(0).getTextContent());
+        admins.setFirstName(element1.getElementsByTagName("firstName").item(0).getTextContent());
+
+        admins.setTelefonNumber(element1.getElementsByTagName("telefonNumber").item(0).getTextContent());
+        employeers.setAdmins(admins);
+        employeerList.add(employeers);
+       activeTasks.setEmployeers(employeerList);
+        nodeList = doc.getElementsByTagName("service");
 
 
-        int index = nodeList.getLength();
+        for (int i = 0; i < nodeList.getLength(); i++) {
+            Services services = new Services();
+            Node node = nodeList.item(i);
+            Element el = (Element) node;
+            services.setTimeToWork(Double.parseDouble(el.getElementsByTagName("timeToWork").item(0).getTextContent()));
+            services.setService(el.getElementsByTagName("service").item(0).getTextContent());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+            services.getDateOfChange((sdf.parse(element1.getElementsByTagName("dateOfChange").item(0).getTextContent())));
+            service.add(services);
+            task.setClients((List<Clients>) clients);
+            task.setServices(service);
 
-        List<Suppliers> supplier = new ArrayList<>();
-        for (int i = 0; i < index; i++) {
-            Suppliers suppliers = new Suppliers();
-            Node node1 = nodeList.item(i);
-            Element suppliersElement = (Element) node1;
-            suppliers.setModel(suppliersElement.getElementsByTagName("model").item(i).getTextContent());
-            suppliers.setCountry(suppliersElement.getElementsByTagName("country").item(i).getTextContent());
-            supplier.add(suppliers);
         }
-        LOGGER.info(services);
+        NodeList clientsList = doc.getElementsByTagName("clients");
+        Node clientNode = clientsList.item(0);
+        Element clientElement = (Element) clientNode;
+        clients.setFirstName(clientElement.getElementsByTagName("firstName").item(0).getTextContent());
+        clients.setName(clientElement.getElementsByTagName("name").item(0).getTextContent());
+
+      taskList.add(task);
+        activeTasks.setTask(taskList);
+
+        LOGGER.info(activeTasks);
     }
-    public Services takeServices(){
-        return services;
+
+    public ActiveTasks takeActiveTasks() {
+        return activeTasks;
     }
 }

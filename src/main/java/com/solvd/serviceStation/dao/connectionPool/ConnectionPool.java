@@ -30,7 +30,7 @@ public class ConnectionPool {
        } else if(conAmount <maxAmount){
            try {
                conAmount++;
-               return DriverManager.getConnection("jdbc:mysql://52.59.193.212:3306/Service");
+               return DriverManager.getConnection("jdbc:mysql://52.59.193.212:3306/ServiceStation");
            } catch (SQLException throwables){
                conAmount--;
                LOGGER.info(throwables);

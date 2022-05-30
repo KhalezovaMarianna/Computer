@@ -10,18 +10,17 @@ import java.util.Objects;
 
 public class Services {
     private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/mm/yyyy");
-    private TimeToWork timeToWork;
+    private Double timeToWork;
     private String service;
     @JsonProperty
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
     private Date dateOfChange;
 
-
-    public TimeToWork getTimeToWork(double v) {
+    public Double getTimeToWork() {
         return timeToWork;
     }
 
-    public void setTimeToWork(TimeToWork timeToWork) {
+    public void setTimeToWork(Double timeToWork) {
         this.timeToWork = timeToWork;
     }
 
@@ -33,7 +32,7 @@ public class Services {
         this.service = service;
     }
 
-    public Date getDateOfChange() {
+    public Date getDateOfChange(Date birthday) {
         return dateOfChange;
     }
 

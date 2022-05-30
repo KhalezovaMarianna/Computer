@@ -2,25 +2,29 @@ package com.solvd.parser.models;
 
 import jakarta.xml.bind.annotation.XmlElement;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Task {
-    private Services services;
-    private Clients clients;
+    private List<Services> services;
+    private List<Clients> clients;
 
-    public Services getServices() {
+    public List<Services> getServices() {
         return services;
     }
-@XmlElement(name ="service")
-    public void setServices(Services services) {
+
+    public void setServices(List<Services> services) {
         this.services = services;
     }
 
-    public Clients getClients() {
+    @XmlElement(name ="service")
+
+
+    public List<Clients> getClients() {
         return clients;
     }
 
-    public void setClients(Clients clients) {
+    public void setClients(List<Clients> clients) {
         this.clients = clients;
     }
 

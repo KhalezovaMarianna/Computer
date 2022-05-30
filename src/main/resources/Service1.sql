@@ -8,17 +8,17 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema Service
+-- Schema ServiceStation
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema Service
+-- Schema ServiceStation
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Service` DEFAULT CHARACTER SET utf8 ;
 USE `Service` ;
 
 -- -----------------------------------------------------
--- Table `Service`.`Autos`
+-- Table `ServiceStation`.`Autos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Auto` (
   `StateNumber` INT NOT NULL,
@@ -28,7 +28,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Clients`
+-- Table `ServiceStation`.`Clients`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Clients` (
   `idClients` INT GENERATED ALWAYS AS () VIRTUAL,
@@ -47,7 +47,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Services`
+-- Table `ServiceStation`.`Services`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Services` (
   `idServices` INT NOT NULL,
@@ -58,7 +58,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Sales`
+-- Table `ServiceStation`.`Sales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Sales` (
   `idSales` INT NOT NULL,
@@ -76,7 +76,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Salaries`
+-- Table `ServiceStation`.`Salaries`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Salaries` (
   `idSalary` INT NOT NULL,
@@ -87,7 +87,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Garages`
+-- Table `ServiceStation`.`Garages`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Garages` (
   `idGarage` INT NOT NULL,
@@ -98,7 +98,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Employeers`
+-- Table `ServiceStation`.`Employeers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Employeers` (
   `idEmployeers` INT NOT NULL,
@@ -122,7 +122,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Masters`
+-- Table `ServiceStation`.`Masters`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Masters` (
   `idMasters` INT NOT NULL,
@@ -141,7 +141,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Diagnosts`
+-- Table `ServiceStation`.`Diagnosts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Diagnosts` (
   `idDiagnosts` INT NOT NULL,
@@ -160,7 +160,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`ActiveTasks`
+-- Table `ServiceStation`.`ActiveTasks`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`ActiveTasks` (
   `idActiveTasks` INT NOT NULL,
@@ -190,7 +190,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`TimeToWork`
+-- Table `ServiceStation`.`TimeToWork`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`TimeToWork` (
   `idTime` INT NOT NULL,
@@ -207,7 +207,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Costs`
+-- Table `ServiceStation`.`Costs`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Costs` (
   `idCosts` INT NOT NULL,
@@ -225,7 +225,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Admins`
+-- Table `ServiceStation`.`Admins`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Admins` (
   `idAdmins` INT NOT NULL,
@@ -244,7 +244,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Materials`
+-- Table `ServiceStation`.`Materials`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Materials` (
   `idMaterials` INT NOT NULL,
@@ -255,7 +255,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Suppliers`
+-- Table `ServiceStation`.`Suppliers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Suppliers` (
   `idSuppliers` INT NOT NULL,
@@ -266,7 +266,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Service`.`Materials_has_Suppliers`
+-- Table `ServiceStation`.`Materials_has_Suppliers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Service`.`Materials_has_Suppliers` (
   `Materials_idMaterials` INT NOT NULL,

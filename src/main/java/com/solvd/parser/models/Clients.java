@@ -12,7 +12,7 @@ public class Clients {
     private String name;
     private String firstName;
     private String telefonNumber;
-    private Autos auto;
+    private String auto;
 
     public Clients() {
         this.name = name;
@@ -46,11 +46,11 @@ public class Clients {
     }
 
 
-    public Autos getAuto() {
+    public String getAuto() {
         return auto;
     }
 
-    public void setAuto(Autos auto) {
+    public void setAuto(String auto) {
         this.auto = auto;
     }
 
