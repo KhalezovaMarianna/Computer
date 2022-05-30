@@ -112,7 +112,7 @@ public class DomParser {
         employeers.setAdmins(admins);
         employeerList.add(employeers);
        activeTasks.setEmployeers(employeerList);
-        nodeList = doc.getElementsByTagName("service");
+        nodeList = doc.getElementsByTagName("services");
 
 
         for (int i = 0; i < nodeList.getLength(); i++) {
@@ -122,9 +122,8 @@ public class DomParser {
             services.setTimeToWork(Double.parseDouble(el.getElementsByTagName("timeToWork").item(0).getTextContent()));
             services.setService(el.getElementsByTagName("service").item(0).getTextContent());
             SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
-            services.getDateOfChange((sdf.parse(element1.getElementsByTagName("dateOfChange").item(0).getTextContent())));
+            services.setDateOfChange(sdf.parse(el.getElementsByTagName("dateOfChange").item(0).getTextContent()));
             service.add(services);
-            task.setClients((List<Clients>) clients);
             task.setServices(service);
 
         }

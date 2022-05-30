@@ -24,20 +24,21 @@ public class ServiceStation {
         try {
             domParser.parse();
         } catch (Exception e) {
-            LOGGER.info(e);
+            e.printStackTrace();
+
         }
         ActiveTasks aa = domParser.takeActiveTasks();
-        JaxbWritter.marshal(aa);
-        ActiveTasks aan = new ActiveTasks();
-        try {
-            aan = JaxbWritter.unmarhall();
-        } catch (FileNotFoundException e) {
-            LOGGER.info(e);
-        } catch (javax.xml.bind.JAXBException e) {
-            e.printStackTrace();
-        }
-        JacksonWritter.deserialize();
-        JacksonWritter.serialize(aan);
+//        JaxbWritter.marshal(aa);
+//        ActiveTasks aan = new ActiveTasks();
+//        try {
+//            aan = JaxbWritter.unmarhall();
+//        } catch (FileNotFoundException e) {
+//            LOGGER.info(e);
+//        } catch (javax.xml.bind.JAXBException e) {
+//            e.printStackTrace();
+//        }
+//        JacksonWritter.deserialize();
+//        JacksonWritter.serialize(aan);
     }
 
 }
