@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
     private static final Logger LOGGER = LogManager.getLogger(AutoDAO.class);
@@ -20,7 +19,7 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
     private PreparedStatement pr = null;
 
     @Override
-    public List<Autos> getAllAutos() {
+    public void getAllAutos() {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("select * from Autos");
@@ -47,7 +46,6 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
 
             }
         }
-        return getAllAutos();
     }
 
     @Override
