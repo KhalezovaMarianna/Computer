@@ -2,3 +2,5 @@
 /.log/
 /logs/
 *.iml
+/target/
+/out/
