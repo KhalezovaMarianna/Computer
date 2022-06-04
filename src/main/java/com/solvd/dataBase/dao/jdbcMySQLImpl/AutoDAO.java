@@ -10,12 +10,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
     private static final Logger LOGGER = LogManager.getLogger(AutoDAO.class);
     private Connection connection = null;
     private ResultSet resultSet = null;
-    private Autos a = new Autos();
+    private Autos a = new Autos(1234,"BMW");
     private PreparedStatement pr = null;
 
     @Override
@@ -46,6 +47,11 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
 
             }
         }
+    }
+
+    @Override
+    public List<Autos> getAutos() {
+        return getAutos();
     }
 
     @Override

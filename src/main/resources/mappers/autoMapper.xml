@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dataBase.dao.IAutoDAO">
+    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.classes.Autos">
+        <result property="stateNumber" column="stateNumber"/>
+        <result property="model" column="model"/>
+    </resultMap>
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        select *
+        from autos
+        where stateNumber = #{stateNumber}
+    </select>
+    <insert id="saveEntity" parameterType="com.solvd.dataBase.classes.Autos" useGeneratedKeys="true" keyProperty="stateNumber"
+            timeout="20">
+        insert into autos (stateNumber, model)
+        values (#{stateNumber}, #{model})
+    </insert>
+    <update id="updateEntity" parameterType="com.solvd.dataBase.classes.Autos">
+        update autos
+        set model = #{model},
+        where stateNumber = #{stateNumber}
+    </update>
+    <delete id="removeEntity">
+        delete
+        from autos
+        where stateNumber = #{stateNumber}
+    </delete>
+    <select id="getAllAutos" resultMap="result">select * from autos</select>
+</mapper>

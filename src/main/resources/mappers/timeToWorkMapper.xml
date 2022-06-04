@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dataBase.dao.ITimeToWorkDAO">
+    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.classes.TimeToWork">
+        <result property="idTime" column="idTime"/>
+        <result property="timeToWork" column="timeToWork"/>
+    </resultMap>
+    <select id="getEntityById" parameterType="Integer" resultMap="result">
+        select *
+        from timeToWork
+        where idTime = #{idTime}
+    </select>
+    <insert id="saveEntity" parameterType="com.solvd.dataBase.classes.TimeToWork" useGeneratedKeys="true" keyProperty="idTime"
+            timeout="20">
+        insert into clients (idTime, timeToWork)
+        values (#{idTime}, #{timeToWork})
+    </insert>
+    <update id="updateEntity" parameterType="com.solvd.dataBase.classes.TimeToWork">
+        update timeToWork
+        set timeToWork = #{timeToWork},
+            where idTime = #{idTime}
+    </update>
+    <delete id="removeEntity">
+        delete
+        from timeToWork
+        where idTime = #{idTime}
+    </delete>
+    <select id="getAllTimeToWork" resultMap="result">select * from timeToWork</select>
+</mapper>

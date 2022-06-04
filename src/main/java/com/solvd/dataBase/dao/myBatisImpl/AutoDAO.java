@@ -76,11 +76,16 @@ public class AutoDAO implements IAutoDAO {
     public void getAllAutos() {
         try {
             sqlSession = sqlSessionFactory.openSession();
-            List<Autos> autos = sqlSession.selectList("showAll");
+            List<Autos> autos = sqlSession.selectList("getAllAutos");
             autos.stream().forEach(LOGGER::info);
         } finally {
             sqlSession.close();
         }
+    }
+
+    @Override
+    public List<Autos> getAutos() {
+        return getAutos();
     }
 }
 

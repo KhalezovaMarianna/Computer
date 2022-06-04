@@ -15,6 +15,11 @@ public class Garages {
         this.maxWorkers = maxWorkers;
     }
 
+    public Garages(String adress, int maxWorkers) {
+        this.adress = adress;
+        this.maxWorkers = maxWorkers;
+    }
+
     public Garages() {
     }
 

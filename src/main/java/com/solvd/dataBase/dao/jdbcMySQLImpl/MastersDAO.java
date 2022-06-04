@@ -16,7 +16,7 @@ public class MastersDAO extends AbstractClassJDBC implements IMasterDAO {
     private static final Logger LOGGER = LogManager.getLogger(MastersDAO.class);
     private Connection connection = null;
     private ResultSet resultSet = null;
-    private Masters m = new Masters();
+    private Masters m = new Masters(1, "Sasha","Khalezov","+375294546474");
     private PreparedStatement pr = null;
 
     @Override

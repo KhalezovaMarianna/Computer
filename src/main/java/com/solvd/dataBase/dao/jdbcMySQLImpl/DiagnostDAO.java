@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DiagnostDAO extends AbstractClassJDBC implements IDiagnostDAO {
     private static final Logger LOGGER = LogManager.getLogger(DiagnostDAO.class);
@@ -19,7 +20,7 @@ public class DiagnostDAO extends AbstractClassJDBC implements IDiagnostDAO {
     private PreparedStatement pr = null;
 
     @Override
-    public void getAllDiagnosts() {
+    public List<Diagnosts> getAllDiagnosts() {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("select * from Diagnosts");
@@ -49,6 +50,7 @@ public class DiagnostDAO extends AbstractClassJDBC implements IDiagnostDAO {
             }
         }
 
+        return getAllDiagnosts();
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.solvd.dataBase.dao.myBatisImpl;
 
-import com.solvd.dataBase.classes.Autos;
 import com.solvd.dataBase.classes.Diagnosts;
 import com.solvd.dataBase.dao.IDiagnostDAO;
 import org.apache.ibatis.io.Resources;
@@ -74,13 +73,14 @@ public class DiagnostDAO implements IDiagnostDAO {
     }
 
     @Override
-    public void getAllDiagnosts() {
+    public List<Diagnosts> getAllDiagnosts() {
         try {
             sqlSession = sqlSessionFactory.openSession();
-            List<Autos> autos = sqlSession.selectList("getAllDiagnost");
-            autos.stream().forEach(LOGGER::info);
+            List<Diagnosts> diagnosts = sqlSession.selectList("getAllDiagnost");
+            diagnosts.stream().forEach(LOGGER::info);
         } finally {
             sqlSession.close();
         }
+       return getAllDiagnosts();
     }
 }

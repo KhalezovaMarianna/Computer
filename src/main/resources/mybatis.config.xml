@@ -20,6 +20,6 @@
         <mapper resource="mappers/diagnostMapper.xml"/>
         <mapper resource="mappers/garageMapper.xml"/>
         <mapper resource="mappers/masterMapper.xml"/>
-        <mapper resource="mappers/timeMapper.xml"/>
+        <mapper resource="mappers/timeToWorkMapper.xml"/>
     </mappers>
 </configuration>

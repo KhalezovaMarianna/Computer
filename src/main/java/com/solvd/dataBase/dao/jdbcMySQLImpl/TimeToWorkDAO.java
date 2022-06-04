@@ -16,7 +16,7 @@ public class TimeToWorkDAO extends AbstractClassJDBC implements ITimeToWorkDAO {
     private static final Logger LOGGER = LogManager.getLogger(TimeToWorkDAO.class);
     private Connection connection = null;
     private ResultSet resultSet = null;
-    private TimeToWork t = new TimeToWork();
+    private TimeToWork t = new TimeToWork(1,1.5);
     private PreparedStatement pr = null;
 
     @Override

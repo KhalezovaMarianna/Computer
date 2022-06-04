@@ -17,7 +17,11 @@ public class Autos {
         return null;
     }
 
-    public Autos() {
+    public Autos(String model) {
+        this.model = model;
+    }
+
+    public Autos(int stateNumber, String model) {
         this.stateNumber = stateNumber;
         this.model = model;
     }
