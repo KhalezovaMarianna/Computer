@@ -5,10 +5,10 @@ import org.apache.logging.log4j.Logger;
 
 public class Autos {
     private static final Logger LOGGER = LogManager.getLogger(Autos.class);
-    private int stateNumber;
+    private Integer stateNumber;
     private String model;
 
-    public void setStateNumber(int stateNumber) {
+    public void setStateNumber(Integer stateNumber) {
         this.stateNumber = stateNumber;
     }
 
@@ -21,12 +21,12 @@ public class Autos {
         this.model = model;
     }
 
-    public Autos(int stateNumber, String model) {
+    public Autos(Integer stateNumber, String model) {
         this.stateNumber = stateNumber;
         this.model = model;
     }
 
-    public int getStateNumber() {
+    public Integer getStateNumber() {
         return stateNumber;
     }
 

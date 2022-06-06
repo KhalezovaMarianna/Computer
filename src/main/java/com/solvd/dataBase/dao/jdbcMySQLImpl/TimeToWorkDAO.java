@@ -19,6 +19,10 @@ public class TimeToWorkDAO extends AbstractClassJDBC implements ITimeToWorkDAO {
     private TimeToWork t = new TimeToWork(1,1.5);
     private PreparedStatement pr = null;
 
+    public static List<TimeToWork> getTimeToWork() {
+        return getTimeToWork();
+    }
+
     @Override
     public List<TimeToWork> getAllTimeToWork() {
         try {

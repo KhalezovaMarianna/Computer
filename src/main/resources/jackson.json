@@ -1,25 +1,7 @@
-[{
-  "id" : 1,
-  "name" : "Sasha",
-  "address" : "Lenina 2",
-  "employeers" : [ {
-    "admins" : {
-      "name" : "Nikita",
-      "firstName" : "Tamodlin",
-      "telefonNumber" : "+375293435382"
-    }
-  } ],
-  "task" : [ {
-    "services" : [ {
-      "timeToWork" : 2.5,
-      "service" : "change oil",
-      "dateOfChange" : "02/02/2021"
-    } ],
-    "clients":[{
-      "name": "Masha",
-      "firstName": "Khalezova",
-      "telefonNumber": "+375295432123",
-      "auto": "Skoda"
-    }]
-  } ]
-}]
+[ {
+  "id" : 0,
+  "name" : null,
+  "address" : null,
+  "employeers" : [ ],
+  "task" : [ ]
+} ]
