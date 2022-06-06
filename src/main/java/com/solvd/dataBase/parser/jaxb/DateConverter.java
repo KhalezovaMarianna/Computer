@@ -1,7 +1,8 @@
 package com.solvd.dataBase.parser.jaxb;
 
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

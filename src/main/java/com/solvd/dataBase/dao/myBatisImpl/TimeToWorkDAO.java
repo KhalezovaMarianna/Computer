@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class TimeToWorkDAO implements ITimeToWorkDAO {
-    private static final Logger LOGGER = LogManager.getLogger(AutoDAO.class);
+    private static final Logger LOGGER = LogManager.getLogger(TimeToWorkDAO.class);
     private static ITimeToWorkDAO timeMapper;
     private static SqlSession sqlSession;
     private static final SqlSessionFactory sqlSessionFactory;

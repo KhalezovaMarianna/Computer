@@ -1,9 +1,10 @@
 package com.solvd.dataBase.parser.models;
 
-import jakarta.xml.bind.annotation.XmlType;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 @XmlType(propOrder = {"name", "firstName", "telefonNumber"})

@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <activeTasks id="1">
     <name>Masha</name>
-    <address>Lenina 5</address>
+    <address>Lenina 2</address>
     <employeers>
         <admins>
-            <name>Maksim</name>
-            <firstName>Loseu</firstName>
-            <telefonNumber>+375989484758</telefonNumber>
+            <name>Denis</name>
+            <firstName>Besarab</firstName>
+            <telefonNumber>+375293534245</telefonNumber>
         </admins>
     </employeers>
     <task>
         <services>
-            <timeToWork>1</timeToWork>
             <service>change oil</service>
-            <dataOfChange>07/04/2019</dataOfChange>
+            <timeToWork>2.2</timeToWork>
         </services>
-        <clients>
-            <name>Arina</name>
-            <firstName>Pomoz</firstName>
-            <telefonNumber>+375290003339</telefonNumber>
-            <auto>Audi</auto>
-        </clients>
     </task>
 </activeTasks>
