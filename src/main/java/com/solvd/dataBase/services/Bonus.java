@@ -20,14 +20,14 @@ public class Bonus {
         if (bonus == null) throw new IllegalArgumentException("The bonus must exist" + bonus);
         ITimeToWorkDAO timeToWorkDAO = new TimeToWorkDAO();
         IAutoDAO autoDAO = new AutoDAO();
-        List<TimeToWork> bonusTimes = new ArrayList<>();
-        List<Autos> autos = autoDAO.getAutos().stream().filter(c -> c.getStateNumber() != null).collect(Collectors.toList());
-        List<TimeToWork> timeToWorks = TimeToWorkDAO.getTimeToWork();
+        List<Autos> bonusTimes = new ArrayList<>();
+        List<Autos> autos =  autoDAO.getAllAutos();
+        List<TimeToWork> timeToWorks = timeToWorkDAO.getAllTimeToWork().stream().filter(c -> c.getTimeToWork() >= 3).collect(Collectors.toList());
         if (!autos.isEmpty()) {
-            for (int i = 0; i < autos.size(); i++) {
-                for (TimeToWork o : timeToWorks) {
-                    if (o.getTimeToWork() == autos.get(i).getStateNumber()) {
-                        o.setTimeToWork(o.getTimeToWork());
+            for (int i = 0; i < timeToWorks.size(); i++) {
+                for (Autos o : autos) {
+                    if (o.getStateNumber() == timeToWorks.get(i).getTimeToWork()) {
+                        o.setStateNumber(o.getStateNumber());
                         bonusTimes.add(o);
                     }
                 }
@@ -35,11 +35,16 @@ public class Bonus {
         }
         for (int i = 0; i < bonusTimes.size(); i++) {
             LOGGER.info("Bonus time is exist"+ bonusTimes.get(i));
-            timeToWorkDAO.updateEntity(bonusTimes.get(i));
+            autoDAO.updateEntity(bonusTimes.get(i));
         }
     }
 
     public static void main(String[] args) {
-        makeBonus(4, "cupOfCoffee");
+        try {
+            makeBonus(4, "cupOfCoffee");
+        }catch (NullPointerException e){
+            LOGGER.info("We don't have autos for bonus");
+        }
+
     }
 }

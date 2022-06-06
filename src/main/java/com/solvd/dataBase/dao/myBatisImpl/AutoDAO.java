@@ -73,7 +73,7 @@ public class AutoDAO implements IAutoDAO {
     }
 
     @Override
-    public void getAllAutos() {
+    public List<Autos> getAllAutos() {
         try {
             sqlSession = sqlSessionFactory.openSession();
             List<Autos> autos = sqlSession.selectList("getAllAutos");
@@ -81,10 +81,11 @@ public class AutoDAO implements IAutoDAO {
         } finally {
             sqlSession.close();
         }
+        return null;
     }
 
     @Override
-    public List<Autos> getAutos() {
+    public Autos getAutos() {
         return getAutos();
     }
 }

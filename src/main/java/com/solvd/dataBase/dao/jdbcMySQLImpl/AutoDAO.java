@@ -20,7 +20,7 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
     private PreparedStatement pr = null;
 
     @Override
-    public void getAllAutos() {
+    public List<Autos> getAllAutos() {
         try {
             connection = getConnectionPool().takeConnection();
             pr = connection.prepareStatement("select * from Autos");
@@ -47,11 +47,12 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
 
             }
         }
+        return null;
     }
 
     @Override
-    public List<Autos> getAutos() {
-        return getAutos();
+    public Autos getAutos() {
+        return a;
     }
 
     @Override
