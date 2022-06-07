@@ -1,6 +1,6 @@
 package com.solvd.dataBase.dao;
 
-import com.solvd.dataBase.classes.TimeToWork;
+import com.solvd.dataBase.models.TimeToWork;
 
 import java.util.List;
 

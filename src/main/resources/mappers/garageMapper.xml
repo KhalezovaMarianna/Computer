@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dataBase.dao.IGarageDAO">
-    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.classes.Garages">
+    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.models.Garages">
         <result property="idGarage" column="idGarage"/>
         <result property="adress" column="adress"/>
         <result property="maxWorkers" column="maxWorkers"/>
@@ -12,12 +12,12 @@
         from garages
         where idGarage = #{idGarage}
     </select>
-    <insert id="saveEntity" parameterType="com.solvd.dataBase.classes.Garages" useGeneratedKeys="true" keyProperty="idGarage"
+    <insert id="saveEntity" parameterType="com.solvd.dataBase.models.Garages" useGeneratedKeys="true" keyProperty="idGarage"
             timeout="20">
         insert into garages (idGarage, adress, maxWorkers)
         values (#{idGarage}, #{adress}, #{maxWorkers})
     </insert>
-    <update id="updateEntity" parameterType="com.solvd.dataBase.classes.Garages">
+    <update id="updateEntity" parameterType="com.solvd.dataBase.models.Garages">
         update garages
         set adress = #{adress},
             maxWorkers = #{maxWorkers},

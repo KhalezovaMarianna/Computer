@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dataBase.dao.IMasterDAO">
-    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.classes.Masters">
+    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.models.Masters">
         <result property="idMasters" column="idMasters"/>
         <result property="name" column="name"/>
         <result property="firstName" column="firstName"/>
@@ -13,12 +13,12 @@
         from masters
         where idMasters = #{idMasters}
     </select>
-    <insert id="saveEntity" parameterType="com.solvd.dataBase.classes.Masters" useGeneratedKeys="true" keyProperty="idMasters"
+    <insert id="saveEntity" parameterType="com.solvd.dataBase.models.Masters" useGeneratedKeys="true" keyProperty="idMasters"
             timeout="20">
         insert into masters (idMasters, name, firstName, telefonNumber)
         values (#{idMasters}, #{name}, #{firstName}, #{telefonNumber})
     </insert>
-    <update id="updateEntity" parameterType="com.solvd.dataBase.classes.Masters">
+    <update id="updateEntity" parameterType="com.solvd.dataBase.models.Masters">
         update masters
         set name = #{name},
             firstName = #{firstName},

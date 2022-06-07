@@ -1,4 +1,4 @@
-package com.solvd.dataBase.classes;
+package com.solvd.dataBase.models;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +8,10 @@ public class Autos {
     private Integer stateNumber;
     private String model;
 
+    public Autos(Integer stateNumber) {
+        this.stateNumber = stateNumber;
+    }
+    public Autos(){}
     public void setStateNumber(Integer stateNumber) {
         this.stateNumber = stateNumber;
     }

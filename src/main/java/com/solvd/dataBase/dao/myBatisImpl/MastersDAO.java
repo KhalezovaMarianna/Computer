@@ -1,6 +1,6 @@
 package com.solvd.dataBase.dao.myBatisImpl;
 
-import com.solvd.dataBase.classes.Masters;
+import com.solvd.dataBase.models.Masters;
 import com.solvd.dataBase.dao.IMasterDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

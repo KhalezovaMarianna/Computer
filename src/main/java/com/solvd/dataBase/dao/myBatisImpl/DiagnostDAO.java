@@ -1,6 +1,6 @@
 package com.solvd.dataBase.dao.myBatisImpl;
 
-import com.solvd.dataBase.classes.Diagnosts;
+import com.solvd.dataBase.models.Diagnosts;
 import com.solvd.dataBase.dao.IDiagnostDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

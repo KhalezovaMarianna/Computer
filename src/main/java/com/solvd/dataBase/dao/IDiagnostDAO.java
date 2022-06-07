@@ -1,6 +1,6 @@
 package com.solvd.dataBase.dao;
 
-import com.solvd.dataBase.classes.Diagnosts;
+import com.solvd.dataBase.models.Diagnosts;
 
 import java.util.List;
 

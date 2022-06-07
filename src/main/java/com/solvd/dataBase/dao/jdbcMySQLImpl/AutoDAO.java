@@ -1,8 +1,8 @@
 package com.solvd.dataBase.dao.jdbcMySQLImpl;
 
-import com.solvd.dataBase.classes.Autos;
+import com.solvd.dataBase.dao.connectionPool.ConnectionPool;
+import com.solvd.dataBase.models.Autos;
 import com.solvd.dataBase.dao.IAutoDAO;
-import com.solvd.dataBase.dao.connectionPool.AbstractClassJDBC;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,94 +10,87 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
-public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
+public class AutoDAO  implements IAutoDAO {
     private static final Logger LOGGER = LogManager.getLogger(AutoDAO.class);
-    private Connection connection = null;
-    private ResultSet resultSet = null;
-    private Autos a = new Autos(1234,"BMW");
+    private static final Properties p = new Properties();
+    private final Autos autos = new Autos("BMW");
+    private final ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection;
     private PreparedStatement pr = null;
+    private ResultSet resultSet = null;
 
     @Override
     public List<Autos> getAllAutos() {
+        List<Autos> auto = new ArrayList<>();
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("select * from Autos");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement("Select * from auto");
             pr.execute();
             resultSet = pr.getResultSet();
             while (resultSet.next()) {
-                a.setStateNumber(resultSet.getInt("2"));
-                a.setModel(resultSet.getString("adress"));
-                LOGGER.info(a);
+                autos.setStateNumber(resultSet.getInt("stateNumber"));
+                autos.setModel(resultSet.getString("name"));
+                auto.add(autos);
             }
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (resultSet != null) resultSet.close();
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
-
             }
         }
-        return null;
+        return auto;
     }
 
     @Override
-    public Autos getAutos() {
-        return a;
-    }
-
-    @Override
-    public Autos getEntityById(int id) throws SQLException {
+    public Autos getEntityById(int stateNumber) throws SQLException {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("select * from Autos  where id=?");
-            pr.setInt(1, id);
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement("Select * from auto where id=?");
+            pr.setInt(1, stateNumber);
             pr.execute();
-            LOGGER.info("it is a select");
+            resultSet = pr.getResultSet();
+            while (resultSet.next()) {
+                autos.setStateNumber(resultSet.getInt("stateNumber"));
+                autos.setModel(resultSet.getString("model"));
+            }
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (resultSet != null) resultSet.close();
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
         }
-        return getEntityById(1);
+        return autos;
     }
 
 
     @Override
     public void saveEntity(Autos entity) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("Insert into autos (stateNumber, model) Values (?,?)");
-            resultSet = pr.getResultSet();
-            pr.setInt(1, entity.getStateNumber());
-            pr.setString(2, entity.getModel());
-            pr.execute();
-            LOGGER.info("has been save");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement
+                    ("Insert into auto (model) Values (?)");
+            pr.setString(1, entity.getModel());
+            pr.executeUpdate();
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
@@ -108,21 +101,17 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
     @Override
     public void updateEntity(Autos entity) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("update Autos set model=? where id=?");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement
+                    ("Update auto Set model=? where stateNumber=?");
             pr.setString(1, entity.getModel());
-            pr.setInt(2, entity.getStateNumber());
             pr.executeUpdate();
-            LOGGER.info("Autos data has been update");
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
@@ -132,24 +121,19 @@ public class AutoDAO extends AbstractClassJDBC implements IAutoDAO {
     @Override
     public void removeEntity(Autos entity) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("delete from Autos where id=?");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement("Delete from auto where stateNumber=?");
             pr.setInt(1, entity.getStateNumber());
             pr.executeUpdate();
-            LOGGER.info("Autos data has been delete");
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
         }
-
     }
 }

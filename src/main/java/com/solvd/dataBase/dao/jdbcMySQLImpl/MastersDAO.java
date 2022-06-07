@@ -1,125 +1,128 @@
 package com.solvd.dataBase.dao.jdbcMySQLImpl;
 
 import com.solvd.dataBase.dao.IMasterDAO;
-import com.solvd.dataBase.classes.Masters;
-import com.solvd.dataBase.dao.connectionPool.AbstractClassJDBC;
+import com.solvd.dataBase.dao.connectionPool.ConnectionPool;
+import com.solvd.dataBase.models.Diagnosts;
+import com.solvd.dataBase.models.Masters;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.sound.midi.MidiMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
-public class MastersDAO extends AbstractClassJDBC implements IMasterDAO {
+public class MastersDAO implements IMasterDAO {
     private static final Logger LOGGER = LogManager.getLogger(MastersDAO.class);
-    private Connection connection = null;
-    private ResultSet resultSet = null;
-    private Masters m = new Masters(1, "Sasha","Khalezov","+375294546474");
+    private static final Properties p = new Properties();
+    private final Masters masters = new Masters();
+    private final ConnectionPool connectionPool = ConnectionPool.getInstance();
+    private Connection connection;
     private PreparedStatement pr = null;
+    private ResultSet resultSet = null;
 
     @Override
     public List<Masters> getAllMasters() {
+        List<Masters> masters = new ArrayList<>();
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("select * from Masters");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement("Select * from masters");
             pr.execute();
             resultSet = pr.getResultSet();
             while (resultSet.next()) {
-                m.setIdMasters(resultSet.getInt("2"));
-                m.setName(resultSet.getString("name"));
-                m.setFirstName(resultSet.getString("firstName"));
-                m.setTelefonNumber(resultSet.getString("telefonNumber"));
-                LOGGER.info(m);
+                Masters master = new Masters();
+                master.setIdMasters(resultSet.getInt("id"));
+                master.setName(resultSet.getString("name"));
+                master.setFirstName(resultSet.getString("firstName"));
+                master.setTelefonNumber(resultSet.getString("telefonNumber"));
+                masters.add(master);
             }
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
-                if (resultSet != null) {
-                    resultSet.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (resultSet != null) resultSet.close();
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
-
             }
         }
-        return getAllMasters();
+        return masters;
     }
+
+
     @Override
-    public Masters getEntityById(int id) throws SQLException {
+    public Masters getEntityById(int idMasters) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("select * from Masters  where id=?");
-            pr.setInt(1, id);
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement("Select * from Masters where id=?");
+            pr.setInt(1, idMasters);
             pr.execute();
-            LOGGER.info("it is a select");
+            resultSet = pr.getResultSet();
+            while (resultSet.next()) {
+                masters.setIdMasters(resultSet.getInt("id"));
+                masters.setName(resultSet.getString("name"));
+                masters.setFirstName(resultSet.getString("firstName"));
+                masters.setTelefonNumber(resultSet.getString("telefonNumber"));
+            }
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (resultSet != null) resultSet.close();
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
         }
-        return getEntityById(1);
+        return masters;
     }
-
 
     @Override
     public void saveEntity(Masters entity) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("insert into Masters(firstName) values (?)");
-            resultSet = pr.getResultSet();
-            pr.setInt(1, resultSet.getInt("firstName"));
-            pr.execute();
-            LOGGER.info("has been insert");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement
+                    ("Insert into masters (name,firstName,telefonNumber) Values (?,?,?)");
+            pr.setString(1, entity.getName());
+            pr.setString(2, entity.getFirstName());
+            pr.setString(3, entity.getTelefonNumber());
+            pr.executeUpdate();
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
         }
     }
 
+
     @Override
     public void updateEntity(Masters entity) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("update Masters set name=?,firstName=?,telefonNumber=? where id=?");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement
+                    ("Update masters Set name=?,firstName=?,telefonNumber=? where idMasters=?");
             pr.setString(1, entity.getName());
             pr.setString(2, entity.getFirstName());
             pr.setString(3, entity.getTelefonNumber());
-            pr.setInt(4, entity.getIdMasters());
             pr.executeUpdate();
-            LOGGER.info("Masters data has been update");
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
@@ -129,26 +132,19 @@ public class MastersDAO extends AbstractClassJDBC implements IMasterDAO {
     @Override
     public void removeEntity(Masters entity) {
         try {
-            connection = getConnectionPool().takeConnection();
-            pr = connection.prepareStatement("delete from Masters where id=?");
+            connection = connectionPool.retrieve();
+            pr = connection.prepareStatement("Delete from Masters where idMasters=?");
             pr.setInt(1, entity.getIdMasters());
             pr.executeUpdate();
-            LOGGER.info("Garages data has been delete");
         } catch (SQLException e) {
             LOGGER.info(e);
         } finally {
-
-            getConnectionPool().returnConnection(connection);
             try {
-                if (pr != null) {
-                    pr.close();
-                }
+                if (connection != null) connectionPool.putback(connection);
+                if (pr != null) pr.close();
             } catch (SQLException e) {
                 LOGGER.info(e);
             }
         }
-
     }
-
-
 }

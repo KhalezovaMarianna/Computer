@@ -1,4 +1,4 @@
-package com.solvd.dataBase.classes;
+package com.solvd.dataBase.models;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,12 +10,15 @@ public class Masters {
     private String firstName;
     private String telefonNumber;
 
-    public Masters(int idMasters,String name, String firstName, String telefonNumber) {
-        this.idMasters=idMasters;
+    public Masters(int idMasters, String name, String firstName, String telefonNumber) {
+        this.idMasters = idMasters;
         this.name = name;
         this.firstName = firstName;
         this.telefonNumber = telefonNumber;
 
+    }
+
+    public Masters() {
     }
 
     public String getName() {

@@ -1,7 +1,7 @@
 package com.solvd.dataBase.dao.myBatisImpl;
 
 
-import com.solvd.dataBase.classes.TimeToWork;
+import com.solvd.dataBase.models.TimeToWork;
 import com.solvd.dataBase.dao.ITimeToWorkDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

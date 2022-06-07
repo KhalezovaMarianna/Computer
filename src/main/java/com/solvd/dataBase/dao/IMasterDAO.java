@@ -1,6 +1,6 @@
 package com.solvd.dataBase.dao;
 
-import com.solvd.dataBase.classes.Masters;
+import com.solvd.dataBase.models.Masters;
 
 import java.util.List;
 

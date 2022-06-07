@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dataBase.dao.IDiagnostDAO">
-    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.classes.Diagnosts">
+    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.models.Diagnosts">
         <result property="idDiagnosts" column="idDiagnosts"/>
         <result property="name" column="name"/>
         <result property="firstName" column="firstName"/>
@@ -13,12 +13,12 @@
         from diagnosts
         where idDiagnosts = #{idDiagnosts}
     </select>
-    <insert id="saveEntity" parameterType="com.solvd.dataBase.classes.Diagnosts" useGeneratedKeys="true" keyProperty="idDiagnosts"
+    <insert id="saveEntity" parameterType="com.solvd.dataBase.models.Diagnosts" useGeneratedKeys="true" keyProperty="idDiagnosts"
             timeout="20">
         insert into diagnosts (idDiagnosts, name, firstName, telefonNumber)
         values (#{idDiagnosts}, #{name}, #{firstName}, #{telefonNumber})
     </insert>
-    <update id="updateEntity" parameterType="com.solvd.dataBase.classes.Diagnosts">
+    <update id="updateEntity" parameterType="com.solvd.dataBase.models.Diagnosts">
         update diagnosts
         set name = #{name},
             firstName = #{firstName},

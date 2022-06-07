@@ -1,7 +1,7 @@
 package com.solvd.dataBase.dao.myBatisImpl;
 
-import com.solvd.dataBase.classes.Autos;
-import com.solvd.dataBase.classes.Garages;
+import com.solvd.dataBase.models.Autos;
+import com.solvd.dataBase.models.Garages;
 import com.solvd.dataBase.dao.IGarageDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

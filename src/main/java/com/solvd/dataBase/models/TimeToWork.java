@@ -1,9 +1,9 @@
-package com.solvd.dataBase.classes;
+package com.solvd.dataBase.models;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class TimeToWork {
+public class TimeToWork implements AdditionalTime {
     private static final Logger LOGGER = LogManager.getLogger(TimeToWork.class);
     private int idTime;
     private double timeToWork;
@@ -35,5 +35,11 @@ public class TimeToWork {
                 "idTime=" + idTime +
                 ", timeToWork=" + timeToWork +
                 '}';
+    }
+
+
+    @Override
+    public void addAdditionalTime() {
+        LOGGER.info("Added time" + getTimeToWork());
     }
 }

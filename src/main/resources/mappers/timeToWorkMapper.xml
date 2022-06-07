@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dataBase.dao.ITimeToWorkDAO">
-    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.classes.TimeToWork">
+    <resultMap id="result" autoMapping="false" type="com.solvd.dataBase.models.TimeToWork">
         <result property="idTime" column="idTime"/>
         <result property="timeToWork" column="timeToWork"/>
     </resultMap>
@@ -11,12 +11,12 @@
         from timeToWork
         where idTime = #{idTime}
     </select>
-    <insert id="saveEntity" parameterType="com.solvd.dataBase.classes.TimeToWork" useGeneratedKeys="true" keyProperty="idTime"
+    <insert id="saveEntity" parameterType="com.solvd.dataBase.models.TimeToWork" useGeneratedKeys="true" keyProperty="idTime"
             timeout="20">
         insert into clients (idTime, timeToWork)
         values (#{idTime}, #{timeToWork})
     </insert>
-    <update id="updateEntity" parameterType="com.solvd.dataBase.classes.TimeToWork">
+    <update id="updateEntity" parameterType="com.solvd.dataBase.models.TimeToWork">
         update timeToWork
         set timeToWork = #{timeToWork},
             where idTime = #{idTime}
